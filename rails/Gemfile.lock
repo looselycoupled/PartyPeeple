@@ -38,6 +38,10 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
     columnize (0.3.4)
+    daemons (1.1.4)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fb_graph (2.1.13)
@@ -110,6 +114,7 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano
+  delayed_job
   fb_graph
   mysql2 (~> 0.2.6)
   rails (= 3.0.9)

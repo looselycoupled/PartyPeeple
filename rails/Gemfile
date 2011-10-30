@@ -6,6 +6,8 @@ gem 'mysql2', '~> 0.2.6'
 
 gem 'fb_graph'
 
+gem 'delayed_job'
+
 group :development do
   gem 'ruby-debug'
   gem 'capistrano'

@@ -1,5 +1,5 @@
 defaults: &defaults
-  app_perms: "user_about_me,user_activities,user_birthday,user_education_history,user_events,user_groups,user_hometown,user_interests,user_likes,user_photos,user_relationships,user_relationship_details,user_religion_politics,user_work_history,email"
+  app_perms: "user_about_me,user_activities,user_birthday,user_education_history,user_events,user_groups,user_hometown,user_interests,user_likes,user_photos,user_relationships,user_relationship_details,user_religion_politics,user_work_history,email,offline_access"
   
 development: 
   <<: *defaults

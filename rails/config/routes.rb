@@ -1,12 +1,9 @@
 Partypeeple::Application.routes.draw do
 
-  # get "public/login"
   match 'login' => 'public#login'
 
-  # get "public/logout"
   match 'logout' => 'public#logout'
 
-  # get "public/about"
   match 'about' => 'public#about'
 
   # The priority is based upon order of creation:

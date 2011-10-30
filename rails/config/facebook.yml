@@ -1,0 +1,17 @@
+defaults: &defaults
+  app_perms: "email"
+  
+development: 
+  <<: *defaults
+  app_id: ""
+  app_secret: ""
+
+test: 
+  <<: *defaults
+  app_id: ""
+  app_secret: ""
+
+production:
+  <<: *defaults
+  app_id: ""
+  app_secret: ""

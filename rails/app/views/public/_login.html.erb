@@ -3,15 +3,13 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '<%= @app_id %>', // App ID
-      channelURL : '//192.168.1.143/channel.html',
+      appId      : '<%= FB_CONFIG["app_id"] %>', // App ID 
+      channelURL : '//<%= request.env["SERVER_NAME"] %>/channel.html',
       status     : false, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       oauth      : true, // enable OAuth 2.0
       xfbml      : false  // parse XFBML
     });
-
-    // Additional initialization code here
   };
    
    function login() {
@@ -23,7 +21,7 @@
           console.log('User cancelled login or did not fully authorize.');
           // window.location.href = "/denied";
         }
-      }, {scope: '<%= @app_perms %>'});
+      }, {scope: '<%= FB_CONFIG["app_perms"] %>'});
       return false;
    }
 </script>

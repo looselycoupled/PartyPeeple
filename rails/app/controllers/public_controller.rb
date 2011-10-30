@@ -8,7 +8,7 @@ class PublicController < ApplicationController
   end
 
   def login
-    auth = FbGraph::Auth.new(@app_id, @app_secret)
+    auth = FbGraph::Auth.new(FB_CONFIG[:app_id], FB_CONFIG[:app_secret])
     auth.from_cookie(cookies) 
     @fb = auth.user.fetch
     
@@ -28,7 +28,7 @@ class PublicController < ApplicationController
 
   def logout
     session[:identifier] = nil
-    cookies.delete "fbsr_#{@app_id}"
+    cookies.delete "fbsr_#{FB_CONFIG[:app_id]}"
     redirect_to root_url
   end
 

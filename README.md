@@ -1,6 +1,14 @@
 # Facebook Integration
 In order to use this app you will need to create a Facebook application at http://developers.facebook.com.  You can enter the application ID and Secret data into rails/config/facebook.yml.
 
+    defaults: &defaults
+      app_perms: "(TBD)"
+  
+    development: 
+      <<: *defaults
+      app_id: "xxxxxx"
+      app_secret: "xxxxxx"
+
 # Puppet
 N/A
 

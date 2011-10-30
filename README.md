@@ -1,5 +1,5 @@
 # Facebook Integration
-In order to use this app you will need to create a Facebook application at http://developers.facebook.com.  Within the application_controller you will need to add your own app_id and app_secret to communicate with Facebook's Open Graph API.
+In order to use this app you will need to create a Facebook application at http://developers.facebook.com.  You can enter the application ID and Secret data into rails/config/facebook.yml.
 
 # Puppet
 N/A

@@ -1,4 +1,12 @@
 Partypeeple::Application.routes.draw do
+  get "public/index"
+
+  get "public/login"
+
+  get "public/logout"
+
+  get "public/about"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

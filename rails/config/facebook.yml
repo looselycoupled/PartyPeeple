@@ -1,10 +1,10 @@
 defaults: &defaults
-  app_perms: "email"
+  app_perms: "user_about_me,user_activities,user_birthday,user_education_history,user_events,user_groups,user_hometown,user_interests,user_likes,user_photos,user_relationships,user_relationship_details,user_religion_politics,user_work_history,email"
   
 development: 
   <<: *defaults
-  app_id: ""
-  app_secret: ""
+  app_id: "133107960128280"
+  app_secret: "f751d36bbfe6e9dd983f2516c040baaf"
 
 test: 
   <<: *defaults
@@ -13,5 +13,26 @@ test:
 
 production:
   <<: *defaults
-  app_id: ""
-  app_secret: ""
+  app_id: "269316813112867"
+  app_secret: "e8724d598f1ea7e49254f0f80a03c7d2"
+
+
+
+# 
+# Facebook permissions
+# 
+# user_about_me: Provides access to the "About Me" section of the profile in the about property
+# user_activities: Provides access to the user's list of activities as the activities connection
+# user_birthday: Provides access to the birthday with year as the birthday_date property
+# user_education_history: Provides access to education history as the education property
+# user_events: Provides access to the list of events the user is attending as the events connection
+# user_groups: Provides access to the list of groups the user is a member of as the groups connection
+# user_hometown: Provides access to the user's hometown in the hometown property
+# user_interests: Provides access to the user's list of interests as the interests connection
+# user_likes: Provides access to the list of all of the pages the user has liked as the likes connection
+# user_photos: Provides access to the photos the user has uploaded, and photos the user has been tagged in
+# user_relationships: Provides access to the user's family and personal relationships and relationship status
+# user_relationship_details: Provides access to the user's relationship preferences
+# user_religion_politics: Provides access to the user's religious and political affiliations
+# user_work_history: Provides access to work history as the work property
+# email: Provides access to the user's primary email address in the email property.

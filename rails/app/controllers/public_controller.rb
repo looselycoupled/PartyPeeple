@@ -1,11 +1,34 @@
 class PublicController < ApplicationController
   def index
+    if authenticated?
+      
+    else
+      render '_login'
+    end
   end
 
   def login
+    auth = FbGraph::Auth.new(@app_id, @app_secret)
+    auth.from_cookie(cookies) 
+    @fb = auth.user.fetch
+    
+    @person = Person.find_or_initialize_by_identifier(@fb.identifier)
+    @person.name = @fb.name
+    @person.identifier = @fb.identifier
+    @person.access_token = @fb.access_token.access_token
+    
+    @person.save!
+    
+    session[:identifier] = @fb.identifier
+    
+    redirect_to root_url
+    
   end
 
   def logout
+    session[:identifier] = nil
+    cookies.delete "fbsr_#{@app_id}"
+    redirect_to root_url
   end
 
   def about

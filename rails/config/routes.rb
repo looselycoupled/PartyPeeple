@@ -1,11 +1,13 @@
 Partypeeple::Application.routes.draw do
-  get "public/index"
 
-  get "public/login"
+  # get "public/login"
+  match 'login' => 'public#login'
 
-  get "public/logout"
+  # get "public/logout"
+  match 'logout' => 'public#logout'
 
-  get "public/about"
+  # get "public/about"
+  match 'about' => 'public#about'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -56,7 +58,7 @@ Partypeeple::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "public#index"
 
   # See how all your routes lay out with "rake routes"
 

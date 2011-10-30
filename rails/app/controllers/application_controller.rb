@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :setup_fb_graph
+  before_filter :setup_fb_graph, :load_person
   protect_from_forgery
 
 
@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
       false
     else
       true
+    end
+  end
+  
+  def load_person
+    if authenticated?
+      @person = Person.find_by_identifier(session[:identifier])
     end
   end
   

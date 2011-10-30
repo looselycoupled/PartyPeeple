@@ -23,6 +23,12 @@ You can also invoke rake jobs:work which will start working off jobs. You can ca
 
 This application include a deploy.rb file for Capistrano deployment.  
 
+# Tips
+
+If you want Git to ignore your changes to facebook.yml you can use the following command:
+
+    git update-index --assume-unchanged rails/config/facebook.yml
+    
 To Do:
 * add delayed_job start and stop tasks
 

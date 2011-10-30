@@ -33,8 +33,8 @@ If you want Git to ignore your changes to facebook.yml you can use the following
 
 Use to get basic profile info from rails console
 
-p = Person.find_by_identifier("737428913")
-fb = FbGraph::User.me(p.access_token).fetch
+    p = Person.find_by_identifier("737428913")
+    fb = FbGraph::User.me(p.access_token).fetch
 
 # To Do:
-* add delayed_job start and stop tasks
+* add delayed_job Capistrano start and stop tasks

@@ -25,3 +25,10 @@ This application include a deploy.rb file for Capistrano deployment.
 
 To Do:
 * add delayed_job start and stop tasks
+
+# Testing Code
+
+Use to get basic profile info from rails console
+
+p = Person.find_by_identifier("737428913")
+fb = FbGraph::User.me(p.access_token).fetch

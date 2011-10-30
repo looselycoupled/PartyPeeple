@@ -1,3 +1,9 @@
+# Facebook Integration
+In order to use this app you will need to create a Facebook application at http://developers.facebook.com.  Within the application_controller you will need to add your own app_id and app_secret to communicate with Facebook's Open Graph API.
+
+# Puppet
+N/A
+
 # Running Jobs
 
 script/delayed_job can be used to manage a background process which will start working off jobs. Make sure you’ve run `script/generate delayed_job`.

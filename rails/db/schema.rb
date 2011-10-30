@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111030065847) do
+ActiveRecord::Schema.define(:version => 20111030155543) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20111030065847) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "preference"
   end
 
 end

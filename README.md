@@ -18,3 +18,10 @@ script/delayed_job can be used to manage a background process which will start w
 Workers can be running on any computer, as long as they have access to the database and their clock is in sync. Keep in mind that each worker will check the database at least every 5 seconds.
 
 You can also invoke rake jobs:work which will start working off jobs. You can cancel the rake task with CTRL-C.
+
+# Capistrano
+
+This application include a deploy.rb file for Capistrano deployment.  
+
+To Do:
+* add delayed_job start and stop tasks

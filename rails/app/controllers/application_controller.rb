@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def setup_fb_graph
     @app_id = "133107960128280"
     @app_secret = "f751d36bbfe6e9dd983f2516c040baaf"
-    @app_perms = ""
+    @app_perms = "email"
   end
   
   def authenticated?

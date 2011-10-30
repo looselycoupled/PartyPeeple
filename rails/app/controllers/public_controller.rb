@@ -18,6 +18,7 @@ class PublicController < ApplicationController
     @person.access_token = @fb.access_token.access_token
     
     @person.save!
+    @person.delay.fetch_email
     
     session[:identifier] = @fb.identifier
     

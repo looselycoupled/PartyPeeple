@@ -2,12 +2,13 @@
 In order to use this app you will need to create a Facebook application at http://developers.facebook.com.  You can enter the application ID and Secret data into rails/config/facebook.yml.
 
     defaults: &defaults
-      app_perms: "(TBD)"
+      app_perms: "user_about_me,user_activities,user_birthday,user_education_history,user_events,user_groups,user_hometown,user_interests,user_likes,user_photos,user_relationships,user_relationship_details,user_religion_politics,user_work_history,email,offline_access"
   
     development: 
       <<: *defaults
-      app_id: "xxxxxx"
-      app_secret: "xxxxxx"
+      app_id: "xxx"
+      app_secret: "xxx"
+      administrators: ["xxx", "yyy"]
 
 # Puppet
 N/A

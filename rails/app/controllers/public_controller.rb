@@ -20,13 +20,12 @@ class PublicController < ApplicationController
     @person.birthday = @fb.birthday
     @person.gender = @fb.gender
     @person.relationship_status = @fb.relationship_status
-    
-    
-    
     @person.save!
+
     @person.delay.fetch_email
     
     session[:identifier] = @fb.identifier
+    session[:administrator] = FB_CONFIG[:administrators].include? @fb.identifier
     
     redirect_to root_url
     

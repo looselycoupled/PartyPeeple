@@ -7,6 +7,10 @@ module ApplicationHelper
       true
     end
   end
+
+  def administrator?
+    session[:administrator]
+  end
   
   # provide access to facebook config to views
   def FB_CONFIG

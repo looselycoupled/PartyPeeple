@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def administrator?
+    session[:administrator]
+  end
+  
   def load_person
     if authenticated?
       @person = Person.find_by_identifier(session[:identifier])

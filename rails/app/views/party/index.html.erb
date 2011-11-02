@@ -1,2 +1,15 @@
 <h1>Party#index</h1>
-<p>Find me in app/views/party/index.html.erb</p>
+
+<p>View by: <%= link_to "arrival", :action => :index, :sort => 'arrival' %> |
+<%= link_to "name", :action => :index, :sort => 'name' %></p>
+
+<% if @peeps.count > 0 %>
+<ul>
+  <% @peeps.each do |p| %>
+    <li style="list-style-type:none; "><img src='http://graph.facebook.com/<%= p.identifier %>/picture?type=square' /><br><%= link_to p.first_name, :action => :peep, :identifier => p.identifier %></li>
+  <% end %>
+</ul>
+
+<% else %>
+  Looks like there's not enough people here yet.  Refresh this page in a couple minutes.
+<% end %>

@@ -2,8 +2,6 @@ Partypeeple::Application.routes.draw do
 
   get "party/orientation"
 
-  get "party/peep"
-
   get "party/index", :as => :party
 
   match 'login' => 'public#login'
@@ -16,9 +14,15 @@ Partypeeple::Application.routes.draw do
   
   match 'dashboard/(:action)' => 'dashboard'
   
+  match 'party/peep/(:identifier)' => 'party#peep'
+
+  match 'party' => 'party#index', :as => :party
+
   match 'party/choose/(:choice)' => 'party#choose'
 
-  match 'party/(:action)' => 'party'
+
+
+
 
 
 

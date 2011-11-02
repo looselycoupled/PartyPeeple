@@ -1,8 +1,2 @@
 <h1>Public#about</h1>
 <p>Find me in app/views/public/about.html.erb</p>
-<%
-p = Person.find_by_identifier("737428913")
-fb = FbGraph::User.me(p.access_token).fetch
-%>
-
-<%= fb.to_yaml %>

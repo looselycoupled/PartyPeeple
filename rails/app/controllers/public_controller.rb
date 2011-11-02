@@ -2,7 +2,7 @@ class PublicController < ApplicationController
 
   def index
     if authenticated?
-      
+      redirect_to party_url
     else
       render '_login'
     end

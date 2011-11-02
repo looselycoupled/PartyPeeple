@@ -4,7 +4,7 @@ Partypeeple::Application.routes.draw do
 
   get "party/peep"
 
-  get "party/peeps", :as => :party
+  get "party/index", :as => :party
 
   match 'login' => 'public#login'
 
@@ -14,6 +14,12 @@ Partypeeple::Application.routes.draw do
   
   match 'dashboard/(:action)' => 'dashboard'
   
+  match 'party/choose/(:choice)' => 'party#choose'
+
+  match 'party/(:action)' => 'party'
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

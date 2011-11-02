@@ -6,4 +6,8 @@ class Person < ActiveRecord::Base
     save!
   end
 
+
+  def chosen_a_team?
+    !preference.nil?
+  end
 end

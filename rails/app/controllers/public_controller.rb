@@ -12,6 +12,7 @@ class PublicController < ApplicationController
     auth.from_cookie(cookies) 
     @fb = auth.user.fetch
     
+    # find/create and save user data
     @person = Person.find_or_initialize_by_identifier(@fb.identifier)
     @person.name = @fb.name
     @person.identifier = @fb.identifier
@@ -22,8 +23,10 @@ class PublicController < ApplicationController
     @person.relationship_status = @fb.relationship_status
     @person.save!
 
+    # add jobs to fetch more info
     @person.delay.fetch_email
     
+    # save session info
     session[:identifier] = @fb.identifier
     session[:administrator] = FB_CONFIG[:administrators].include? @fb.identifier
     
@@ -38,6 +41,9 @@ class PublicController < ApplicationController
   end
 
   def about
+  end
+
+  def help
   end
 
 end

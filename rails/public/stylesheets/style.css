@@ -1,0 +1,32 @@
+body {
+  margin : 0;
+  padding : 0;
+  background-color : #e0e0e0;
+}
+.menu {
+  background-color : #336699;
+  color : #ccc;
+  padding : 8px;
+}
+
+.menu a {
+  color : #eee;
+}
+
+.menu .greeting {
+  float : right;
+}
+
+.content {
+  background-color : #fff;
+  padding : 10px;
+}
+
+.footer {
+  padding : 20px 6px 6px 6px;
+  
+}
+
+.footer a {
+  color : #fff;
+}

@@ -4,19 +4,29 @@
   <title>Partypeeple</title>
   <%#= stylesheet_link_tag :all %>
   <%#= javascript_include_tag :defaults %>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<%= yield %>
+<%= yield(:header) %>
+<div class="menu">
+  <div class="greeting">Hey <%= (@person) ? @person.first_name : "fella"  %>.
+  <% if authenticated? %><a href="/logout">logout</a><% end %>
+  </div>&nbsp;
+  
+  <% if authenticated? %>
+  <a href="/">Peep</a> |
+  <a href="/help">Help</a> |
+  <a href="/about">About</a>
+  <% end %>
+</div>
 
-<hr>
-<a href="/">home</a> |
-<a href="/about">about</a>
+<div class="content">
+<%= yield(:content) %>
+</div>
 
-<% if authenticated? %>
-| <a href="/logout">logout</a>
-<% end %>
 
 
 

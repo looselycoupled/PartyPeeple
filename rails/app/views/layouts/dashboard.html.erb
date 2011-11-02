@@ -1,0 +1,11 @@
+
+<% content_for :content do %>
+
+  <div class="greeting">Hello, <%= @person.first_name %></div>
+
+  <%= yield %>
+
+<% end %>
+
+
+<%= render :file => 'layouts/application' %>

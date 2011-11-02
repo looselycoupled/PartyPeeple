@@ -5,7 +5,9 @@ Partypeeple::Application.routes.draw do
   match 'logout' => 'public#logout'
 
   match 'about' => 'public#about'
-
+  
+  match 'dashboard/(:action)' => 'dashboard'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

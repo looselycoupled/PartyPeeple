@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_filter :load_person
   protect_from_forgery
 
+  layout "general"
+
   private 
     
   def authenticated?

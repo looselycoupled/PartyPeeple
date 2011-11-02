@@ -1,5 +1,10 @@
 # require "bundler/capistrano"
 
+# have capistrano use rvm on the remote server
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
+require 'rvm/capistrano'
+set :rvm_ruby_string, 'ree-1.8.7-2011.03@PartyPeeple'
+
 set :application, "heypartypeeple.com"
 
 set :scm, :git
@@ -13,7 +18,6 @@ set :owners, "www-data:www-data"
 role :web, "50.57.168.215"                          # Your HTTP server, Apache/etc
 role :app, "50.57.168.215"                          # This may be the same as your `Web` server
 role :db,  "50.57.168.215", :primary => true # This is where Rails migrations will run
-
 
 ssh_options[:forward_agent] = true
 

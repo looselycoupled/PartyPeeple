@@ -1,6 +1,6 @@
 # require "bundler/capistrano"
 
-set :application, "partypeeple"
+set :application, "heypartypeeple.com"
 
 set :scm, :git
 set :repository,  "git@github.com:looselycoupled/PartyPeeple.git"
@@ -10,9 +10,9 @@ set :environment, "production"
 set :deploy_to, "/var/apps/#{application}"
 set :owners, "www-data:www-data"
 
-role :web, "50.57.42.23"                          # Your HTTP server, Apache/etc
-role :app, "50.57.42.23"                          # This may be the same as your `Web` server
-role :db,  "50.57.42.23", :primary => true # This is where Rails migrations will run
+role :web, "50.57.168.215"                          # Your HTTP server, Apache/etc
+role :app, "50.57.168.215"                          # This may be the same as your `Web` server
+role :db,  "50.57.168.215", :primary => true # This is where Rails migrations will run
 
 
 ssh_options[:forward_agent] = true

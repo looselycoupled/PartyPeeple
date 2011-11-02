@@ -38,12 +38,16 @@ If you want Git to ignore your changes to facebook.yml you can use the following
 
     git update-index --assume-unchanged rails/config/facebook.yml
     
-# Testing Code
+# Useful code for the lazy and absentminded
 
 Use to get basic profile info from rails console
 
     p = Person.find_by_identifier("737428913")
     fb = FbGraph::User.me(p.access_token).fetch
+    
+Setup a new MySQL user with all permissions
+
+    GRANT ALL ON partypeeple_production.* TO 'partypeeple'@localhost IDENTIFIED BY 'somepassword';
 
 # To Do:
 * add delayed_job Capistrano start and stop tasks

@@ -34,6 +34,6 @@ production:
   reconnect: false
   database: partypeeple_production
   pool: 5
-  username: root
-  password:
+  username: partypeeple
+  password: kKTeraZe9Vfgz4fd
   socket: /var/run/mysqld/mysqld.sock

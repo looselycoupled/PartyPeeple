@@ -1,4 +1,5 @@
 class PublicController < ApplicationController
+
   def index
     if authenticated?
       
@@ -24,13 +25,13 @@ class PublicController < ApplicationController
     @person.save!
 
     # add jobs to fetch more info
-    @person.delay.fetch_email
+    # @person.delay.fetch_email
     
     # save session info
     session[:identifier] = @fb.identifier
     session[:administrator] = FB_CONFIG[:administrators].include? @fb.identifier
     
-    redirect_to root_url
+    redirect_to party_url
     
   end
 

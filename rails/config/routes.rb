@@ -1,5 +1,11 @@
 Partypeeple::Application.routes.draw do
 
+  get "party/orientation"
+
+  get "party/peep"
+
+  get "party/peeps", :as => :party
+
   match 'login' => 'public#login'
 
   match 'logout' => 'public#logout'

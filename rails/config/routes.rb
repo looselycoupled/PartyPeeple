@@ -10,7 +10,9 @@ Partypeeple::Application.routes.draw do
 
   match 'logout' => 'public#logout'
 
-  match 'about' => 'public#about'
+  match 'about' => 'party#about'
+  
+  match 'help' => 'party#help'
   
   match 'dashboard/(:action)' => 'dashboard'
   

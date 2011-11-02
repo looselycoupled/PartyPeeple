@@ -41,10 +41,4 @@ class PublicController < ApplicationController
     redirect_to root_url
   end
 
-  def about
-  end
-
-  def help
-  end
-
 end

@@ -22,6 +22,13 @@ class PartyController < ApplicationController
     
   end
 
+  def about
+  end
+
+  def help
+  end
+
+
   
   private
 

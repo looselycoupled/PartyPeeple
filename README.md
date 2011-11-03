@@ -51,4 +51,3 @@ Setup a new MySQL user with all permissions
 
 # To Do:
 * add delayed_job Capistrano start and stop tasks for nginx
-* add Capistrano start and stop delayed_job rake tasks

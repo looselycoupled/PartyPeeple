@@ -21,7 +21,7 @@ role :db,  "50.57.168.215", :primary => true # This is where Rails migrations wi
 
 ssh_options[:forward_agent] = true
 
-
+set :delayed_job_workers, 2
 
 
 
@@ -103,3 +103,21 @@ namespace :deploy do
 
 end
 
+
+namespace :delayed_job do 
+
+  desc <<-DESC
+      Starts the delayed_job rake task to process jobs
+  DESC
+  task :start do
+    run "RAILS_ENV=production #{current_path}/script/delayed_job -n #{delayed_job_workers} start"
+  end
+
+  desc <<-DESC
+      Stops the delayed_job rake task to process jobs
+  DESC
+  task :stop do
+    run "RAILS_ENV=production #{current_path}/script/delayed_job stop"
+  end
+
+end

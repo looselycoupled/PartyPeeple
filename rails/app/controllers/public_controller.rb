@@ -13,17 +13,21 @@ class PublicController < ApplicationController
     
     # find/create and save user data
     @person = Person.find_or_initialize_by_identifier(@fb.identifier)
-    @person.name = @fb.name
-    @person.identifier = @fb.identifier
-    @person.access_token = @fb.access_token.access_token
-    @person.first_name = @fb.first_name
-    @person.birthday = @fb.birthday
-    @person.gender = @fb.gender
-    @person.relationship_status = @fb.relationship_status
-    @person.save!
 
-    # add jobs to fetch more info
-    # @person.delay.fetch_email
+    if !@person.persisted? || Rails.env == "development"
+      @person.name = @fb.name
+      @person.identifier = @fb.identifier
+      @person.access_token = @fb.access_token.access_token
+      @person.first_name = @fb.first_name
+      @person.birthday = @fb.birthday
+      @person.gender = @fb.gender
+      @person.relationship_status = @fb.relationship_status
+      @person.save
+
+      # add jobs to fetch more info
+      @person.delay.fetch_facebook_data
+    end
+
     
     # save session info
     session[:identifier] = @fb.identifier

@@ -51,8 +51,18 @@ namespace :deploy do
   end
 
 
-  task :start do ; end
-  task :stop do ; end
+  desc <<-DESC
+      Starts the production server
+  DESC
+  task :start do 
+    run "#{try_sudo} /etc/init.d/nginx start"
+  end
+  desc <<-DESC
+      Stops the production server.  Danger! Danger!
+  DESC
+  task :stop do
+    run "#{try_sudo} /etc/init.d/nginx stop"
+  end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end

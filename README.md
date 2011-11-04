@@ -50,4 +50,3 @@ Setup a new MySQL user with all permissions
     GRANT ALL ON partypeeple_production.* TO 'partypeeple'@localhost IDENTIFIED BY 'somepassword';
 
 # To Do:
-* add delayed_job Capistrano start and stop tasks for nginx

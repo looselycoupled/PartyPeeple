@@ -4,9 +4,9 @@ class PartyController < ApplicationController
   
   def index
     if @person.preference == "both"
-      @peeps = Person.where("id <> ?", @person.id)
+      @peeps = Person.where(:preference => @person.gender).where("id <> ?", @person.id)
     else
-      @peeps = Person.where(:gender => @person.preference).where("id <> ?", @person.id)
+      @peeps = Person.where(:preference => @person.gender, :gender => @person.preference).where("id <> ?", @person.id)
       # @peeps = Person.all
     end
   end

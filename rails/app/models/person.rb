@@ -10,12 +10,32 @@ class Person < ActiveRecord::Base
       p = Page.find_or_initialize_by_identifier(:identifier => page.identifier, :name => page.name, :category => page.category)
       pages << p unless pages.include? p
     end
+    
+    # save education 
+    fb.education.each do |edu|
+      page = edu.school
+      p = Page.find_or_initialize_by_identifier(:identifier => page.identifier, :name => page.name, :category => page.category)
+      pages << p unless pages.include? p
+    end
+    
+    # save work history
+    fb.work.each do |job|
+      page = job.employer
+      p = Page.find_or_initialize_by_identifier(:identifier => page.identifier, :name => page.name, :category => page.category)
+      pages << p unless pages.include? p
+    end
+    
+    
+    
 
     self.digital_capital = calculate_digital_capital(fb)
     save!
   end
 
-
+  
+  
+  
+  
   
   def chosen_a_team?
     !preference.nil?

@@ -27,7 +27,8 @@ set :delayed_job_workers, 2
 
 
 namespace :deploy do 
-
+  after   "deploy", "deploy:cleanup"
+  after   "deploy:restart", "delayed_job:restart"
 
   desc <<-DESC
       Updates the symlink to the most recently deployed version. Capistrano works \
@@ -128,6 +129,14 @@ namespace :delayed_job do
   DESC
   task :stop do
     run "RAILS_ENV=production #{current_path}/script/delayed_job stop"
+  end
+
+  desc <<-DESC
+      Restarts the delayed_job rake task to process jobs
+  DESC
+  task :restart do
+    stop
+    start
   end
 
 end

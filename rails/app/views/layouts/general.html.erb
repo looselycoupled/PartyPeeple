@@ -1,4 +1,18 @@
 
+<% content_for :nav do %>
+
+  <% if authenticated? %>
+  <%= link_to "Peeps", party_url %> | 
+  <%= link_to "Help", help_url %> |
+  <%= link_to "About", about_url %>
+    <% if administrator? %>
+    | <%= link_to "Dashboard", :controller => :dashboard %>
+    <% end %>
+  <% end %>
+
+<% end %>
+
+
 <% content_for :content do %>
   
   <%= yield %>

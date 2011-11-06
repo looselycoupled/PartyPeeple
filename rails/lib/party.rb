@@ -26,6 +26,7 @@ module Party
     Page.delete_all
     Person.delete_all
     Friendship.delete_all
+    ActiveRecord::Base.connection.execute("delete from pages_people;")
   end
   
   

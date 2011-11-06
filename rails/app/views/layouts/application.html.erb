@@ -10,18 +10,20 @@
 </head>
 <body>
 
-<%= yield(:header) %>
+  <%= yield(:header) %>
+
+  
+
 <div class="menu">
   <div class="greeting">Hey <%= (@person) ? @person.first_name : "buddy"  %>.
   <% if authenticated? %><a href="/logout">logout</a><% end %>
   </div>&nbsp;
   
-  <% if authenticated? %>
-  <a href="/party">Peep</a> |
-  <a href="/help">Help</a> |
-  <a href="/about">About</a>
-  <% end %>
+  <%= yield(:nav) %>
+  
 </div>
+
+<div id="flash"><%= flash[:notice] %></div>
 
 <div class="content">
 <%= yield(:content) %>

@@ -54,6 +54,10 @@ Setup a new MySQL user with all permissions
 
     GRANT ALL ON partypeeple_production.* TO 'partypeeple'@localhost IDENTIFIED BY 'somepassword';
 
+Generate a app_access_token to do things like create test users
+
+    https://graph.facebook.com/oauth/access_token?client_id=133107960128280&client_secret=f751d36bbfe6e9dd983f2516c040baaf&grant_type=client_credentials
+
 Generate a test user
 
     https://graph.facebook.com/133107960128280/accounts/test-users?
@@ -67,12 +71,12 @@ Generate a test user
 
 Test Users for Development App
 
-  {
+    {
      "id": "100003125681210",
      "access_token": "AAAB5D5yuIxgBAKZAAtJ5OJUMu9nRat7x2Gs1v9eMpRtdQOaGnmncdsBGrPIukTdu3sY2sZBBitPmKZCyTEjsufzc2vUwRMFmRlTSHZAhXAZDZD",
      "login_url": "https://www.facebook.com/platform/test_account_login.php?user_id=100003125681210&n=kdBdSswFA7otufQ",
      "email": "joe_kzyiqim_blow\u0040tfbnw.net",
      "password": "190474533"
-  }
+    }
 
 # To Do:

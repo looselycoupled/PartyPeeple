@@ -8,7 +8,7 @@
 
   <div class="sign">
     <div class="title">SIGN</div>
-    <%= @peep.birthday.try(:to_date).try(:zodiac_sign) # using try for viewing a friend that hasnt been pulled (for testing)%>
+    <%= @peep.birthday.try(:to_date).try(:zodiac_sign) %>
   </div>
 
   <div class="recommendation">

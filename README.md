@@ -46,6 +46,7 @@ Use to get basic profile info from rails console
     fb = FbGraph::User.me(p.access_token).fetch
     
 Get profile info of a friend 
+
     p = Person.find_by_identifier("737428913")
     fb = FbGraph::User.fetch("21202456", :access_token => p.access_token)
     

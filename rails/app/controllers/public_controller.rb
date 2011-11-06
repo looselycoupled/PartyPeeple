@@ -14,7 +14,7 @@ class PublicController < ApplicationController
     # find/create and save user data
     @person = Person.find_or_initialize_by_identifier(@fb.identifier)
 
-    if !@person.persisted? || Rails.env == "development"
+    if @person.gender.nil?
       @person.name = @fb.name
       @person.identifier = @fb.identifier
       @person.access_token = @fb.access_token.access_token

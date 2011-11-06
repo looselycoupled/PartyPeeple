@@ -8,6 +8,16 @@ class Person < ActiveRecord::Base
 
   zodiac_reader :birthday
 
+  # provide first_name if not populated (move to create callback?)
+  def first_name
+    if read_attribute(:first_name).nil?
+      read_attribute(:name).split(" ")[0]
+    else
+      read_attribute(:first_name)
+    end
+  end
+
+
   def fetch_facebook_data
     fb = FbGraph::User.me(access_token).fetch
     
@@ -25,6 +35,7 @@ class Person < ActiveRecord::Base
     end
     
     # save education 
+    # TODO: fix category save
     fb.education.each do |edu|
       page = edu.school
       p = Page.find_or_initialize_by_identifier(:identifier => page.identifier, :name => page.name, :category => page.category)
@@ -32,6 +43,7 @@ class Person < ActiveRecord::Base
     end
     
     # save work history
+    # TODO: fix category save
     fb.work.each do |job|
       page = job.employer
       p = Page.find_or_initialize_by_identifier(:identifier => page.identifier, :name => page.name, :category => page.category)

@@ -12,6 +12,8 @@ Partypeeple::Application.routes.draw do
   
   match 'help' => 'party#help'
   
+  match 'reset' => 'dashboard#reset'
+  
   match 'dashboard/(:action)' => 'dashboard'
   
   match 'party/peep/(:identifier)' => 'party#peep'

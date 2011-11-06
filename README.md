@@ -80,3 +80,18 @@ Test Users for Development App
     }
 
 # To Do:
+
+* Finish conversation starters
+* Develop statistics dashboard page 
+* Post event mailer
+* Add final Help content
+* Add final About content
+* Add browse by name
+* Add ability to skip orietation if user "interested in" is available
+* Add rejection content and add to workflow
+* Add post party content and develop a way to force users to the page
+
+# Nice To Do
+
+* Add furry profile
+* Add e-geaux profile

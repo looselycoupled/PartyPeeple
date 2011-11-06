@@ -1,8 +1,20 @@
 class Person < ActiveRecord::Base
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  # has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  # has_many :inverse_friends, :through => :inverse_friendships, :source => :person
+  
   has_and_belongs_to_many :pages
+
 
   def fetch_facebook_data
     fb = FbGraph::User.me(access_token).fetch
+    
+    # save friends 
+    fb.friends.each do |friend|
+      p = Person.find_or_initialize_by_identifier(friend.identifier, :name => friend.name)
+      friends << p unless friends.include? p
+    end
     
     # save likes as pages
     likes = fb.likes
@@ -35,13 +47,11 @@ class Person < ActiveRecord::Base
   
   
   
-  
-  
   def chosen_a_team?
     !preference.nil?
   end
   
-  
+
 private
   
   def calculate_digital_capital(fb)

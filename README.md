@@ -54,4 +54,25 @@ Setup a new MySQL user with all permissions
 
     GRANT ALL ON partypeeple_production.* TO 'partypeeple'@localhost IDENTIFIED BY 'somepassword';
 
+Generate a test user
+
+    https://graph.facebook.com/133107960128280/accounts/test-users?
+      installed=true
+      &name=FULL_NAME
+      &permissions=read_stream,user_about_me,user_activities,user_birthday,user_education_history,user_events,user_groups,user_hometown,user_interests,user_likes,user_photos,user_relationships,user_relationship_details,user_religion_politics,user_work_history,email,offline_access
+      &method=post
+      &access_token=133107960128280|2QW_NKtcV26UMFCR08O7s-V73f0
+
+    Example: https://graph.facebook.com/133107960128280/accounts/test-users?installed=true&name=Joe%20Blow&permissions=read_stream,user_about_me,user_activities,user_birthday,user_education_history,user_events,user_groups,user_hometown,user_interests,user_likes,user_photos,user_relationships,user_relationship_details,user_religion_politics,user_work_history,email,offline_access&method=post&access_token=133107960128280|2QW_NKtcV26UMFCR08O7s-V73f0
+
+Test Users for Development App
+
+  {
+     "id": "100003125681210",
+     "access_token": "AAAB5D5yuIxgBAKZAAtJ5OJUMu9nRat7x2Gs1v9eMpRtdQOaGnmncdsBGrPIukTdu3sY2sZBBitPmKZCyTEjsufzc2vUwRMFmRlTSHZAhXAZDZD",
+     "login_url": "https://www.facebook.com/platform/test_account_login.php?user_id=100003125681210&n=kdBdSswFA7otufQ",
+     "email": "joe_kzyiqim_blow\u0040tfbnw.net",
+     "password": "190474533"
+  }
+
 # To Do:

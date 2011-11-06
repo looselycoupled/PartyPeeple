@@ -45,6 +45,10 @@ Use to get basic profile info from rails console
     p = Person.find_by_identifier("737428913")
     fb = FbGraph::User.me(p.access_token).fetch
     
+Get profile info of a friend 
+    p = Person.find_by_identifier("737428913")
+    fb = FbGraph::User.fetch("21202456", :access_token => p.access_token)
+    
 Setup a new MySQL user with all permissions
 
     GRANT ALL ON partypeeple_production.* TO 'partypeeple'@localhost IDENTIFIED BY 'somepassword';

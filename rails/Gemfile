@@ -8,6 +8,8 @@ gem 'fb_graph'
 
 gem 'delayed_job'
 
+gem 'zodiac', '>= 0.2'
+
 group :development do
   gem 'ruby-debug'
   gem 'capistrano'

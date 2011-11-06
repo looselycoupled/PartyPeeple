@@ -3,17 +3,17 @@
   <h1><%= @peep.first_name %></h1>
   <div class="dc">
     <div class="title">DIGITAL CAPITAL</div>
-    <%= @peep.digital_capital %>
+    <%= @peep.digital_capital || "Still calculating..."%>
   </div>
 
   <div class="sign">
     <div class="title">SIGN</div>
-    Scorpio
+    <%= @peep.birthday.to_date.zodiac_sign %>
   </div>
 
   <div class="recommendation">
     <div class="title">RECOMMENDATION</div>
-    ?
+    <%= (Party::recommendation @person, @peep).titleize %>
   </div>
 
   <hr>

@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
   
   has_and_belongs_to_many :pages
 
+  zodiac_reader :birthday
 
   def fetch_facebook_data
     fb = FbGraph::User.me(access_token).fetch

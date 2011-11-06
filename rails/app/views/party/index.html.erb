@@ -6,7 +6,11 @@
 <% if @peeps.count > 0 %>
 <ul>
   <% @peeps.each do |p| %>
-    <li style="list-style-type:none; "><img src='http://graph.facebook.com/<%= p.identifier %>/picture?type=square' /><br><%= link_to p.first_name, :action => :peep, :identifier => p.identifier %></li>
+    <li style="list-style-type:none; ">
+      
+      <img src='http://graph.facebook.com/<%= p.identifier %>/picture?type=square' /><br>
+      
+      <%= link_to (p.first_name || p.name.split(" ")[0]), :action => :peep, :identifier => p.identifier %></li>
   <% end %>
 </ul>
 

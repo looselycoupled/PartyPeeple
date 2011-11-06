@@ -47,6 +47,7 @@ GEM
     fb_graph (2.1.13)
       httpclient (>= 2.2.0.2)
       rack-oauth2 (>= 0.9.4)
+    funtimes (0.4.0)
     highline (1.6.2)
     httpclient (2.2.3)
     i18n (0.5.0)
@@ -108,6 +109,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.30)
+    zodiac (0.2.0)
+      funtimes
+      i18n
 
 PLATFORMS
   ruby
@@ -119,3 +123,4 @@ DEPENDENCIES
   mysql2 (~> 0.2.6)
   rails (= 3.0.9)
   ruby-debug
+  zodiac (>= 0.2)

@@ -4,8 +4,9 @@ class PartyController < ApplicationController
   
   # display list of compatible peeps
   def index
+    # TODO: Fix queries for peeps
     if @person.preference == "both"
-      @peeps = Person.where(:preference => @person.gender).where("id <> ?", @person.id)
+      @peeps = Person.where("id <> ? and preference is not null", @person.id)
     else
       @peeps = Person.where(:preference => @person.gender, :gender => @person.preference).where("id <> ?", @person.id)
       # @peeps = Person.all

@@ -20,6 +20,18 @@
   <h2>Conversation Starters</h2>
   
   <ul>
+    <% if @person.birthday == @peep.birthday %>
+    <li><div class="supertitle">Same birthday</div>Born <%= @peep.birthday %></li>
+    <% end %>
+    
+    
+    <% if Party::friends_in_common(@person, @peep).count == 0 %>
+    <li>
+      <div>Tomorrow Morning Won't Be Awkward</div>
+      No Mutual Friends
+    </li>
+    <% end %>
+    
     <li>
       Friends in Common: <%= Party::friends_in_common(@person, @peep).count %>
     </li>

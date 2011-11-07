@@ -86,6 +86,14 @@ Test Users for Development App
        "email": "tricia_joqwctw_helfer\u0040tfbnw.net",
        "password": "307156459"
     }
+    
+    {
+       "id": "100003112464442",
+       "access_token": "AAAB5D5yuIxgBAO3DCLf6jQt7ng5DFfZCkAwKpyRp8L3BT0vZCyjUFhc9xGZCnShBQU8ykI6vigDX4KDsPhQe3KBVFZBE1idrczpSNb6JugZDZD",
+       "login_url": "https://www.facebook.com/platform/test_account_login.php?user_id=100003112464442&n=h7YZexHnhl3ifEb",
+       "email": "zooey_yttlbzz_deschanel\u0040tfbnw.net",
+       "password": "1053297782"
+    }
 
 # To Do:
 

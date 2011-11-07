@@ -29,6 +29,11 @@ module Party
     ActiveRecord::Base.connection.execute("delete from pages_people;")
   end
   
+  module ConversationStarters
+    
+    
+  end
+  
   
   private
     

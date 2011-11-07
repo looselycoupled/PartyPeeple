@@ -17,7 +17,7 @@ set :owners, "www-data:www-data"
 
 role :web, "50.57.168.215"                          # Your HTTP server, Apache/etc
 role :app, "50.57.168.215"                          # This may be the same as your `Web` server
-role :db,  "50.57.168.215", :primary => true # This is where Rails migrations will run
+role :db,  "50.57.168.215", :primary => true        # This is where Rails migrations will run
 
 ssh_options[:forward_agent] = true
 
@@ -74,6 +74,7 @@ namespace :deploy do
     run "#{try_sudo} /etc/init.d/nginx stop"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
+    okays "Restarting the Rails application (touching tmp/restart.txt)"
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 
@@ -191,6 +192,7 @@ namespace :delayed_job do
       Restarts the delayed_job rake task to process jobs
   DESC
   task :restart do
+    okays "Restart delayed job tasks"
     stop
     start
   end

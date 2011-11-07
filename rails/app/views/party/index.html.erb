@@ -7,9 +7,7 @@
 <ul>
   <% @peeps.each do |p| %>
     <li style="list-style-type:none; ">
-      
-      <img src='http://graph.facebook.com/<%= p.identifier %>/picture?type=square' /><br>
-      
+      <%= link_to image_tag("http://graph.facebook.com/#{p.identifier}/picture?type=square"), :action => :peep, :identifier => p.identifier  %><br>
       <%= link_to p.first_name, :action => :peep, :identifier => p.identifier %></li>
   <% end %>
 </ul>

@@ -30,3 +30,10 @@ body {
 .footer a {
   color : #fff;
 }
+
+#peep-list li {
+  display : inline;
+  float : left;
+  padding : 0 10px 10px 0;
+  text-align : center;
+}

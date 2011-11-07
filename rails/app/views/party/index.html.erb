@@ -4,7 +4,7 @@
 <%= link_to "name", :action => :index, :sort => 'name' %></p>
 
 <% if @peeps.count > 0 %>
-<ul>
+<ul id="peep-list">
   <% @peeps.each do |p| %>
     <li style="list-style-type:none; ">
       <%= link_to image_tag("http://graph.facebook.com/#{p.identifier}/picture?type=square"), :action => :peep, :identifier => p.identifier  %><br>

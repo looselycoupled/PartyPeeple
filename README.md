@@ -72,11 +72,19 @@ Generate a test user
 Test Users for Development App
 
     {
-     "id": "100003125681210",
-     "access_token": "AAAB5D5yuIxgBAKZAAtJ5OJUMu9nRat7x2Gs1v9eMpRtdQOaGnmncdsBGrPIukTdu3sY2sZBBitPmKZCyTEjsufzc2vUwRMFmRlTSHZAhXAZDZD",
-     "login_url": "https://www.facebook.com/platform/test_account_login.php?user_id=100003125681210&n=kdBdSswFA7otufQ",
-     "email": "joe_kzyiqim_blow\u0040tfbnw.net",
-     "password": "190474533"
+       "id": "100003125681210",
+       "access_token": "AAAB5D5yuIxgBAKZAAtJ5OJUMu9nRat7x2Gs1v9eMpRtdQOaGnmncdsBGrPIukTdu3sY2sZBBitPmKZCyTEjsufzc2vUwRMFmRlTSHZAhXAZDZD",
+       "login_url": "https://www.facebook.com/platform/test_account_login.php?user_id=100003125681210&n=kdBdSswFA7otufQ",
+       "email": "joe_kzyiqim_blow\u0040tfbnw.net",
+       "password": "190474533"
+    }
+    
+    {
+       "id": "100003108654021",
+       "access_token": "AAAB5D5yuIxgBAHR4YWooXukUageZBppdkNpsSZCuFXPNxtFvccZCOvC1nZC1Hb2Yfq3vcQffByJ1x45Kdxv465filOBDEzDlsHthtq1k2AZDZD",
+       "login_url": "https://www.facebook.com/platform/test_account_login.php?user_id=100003108654021&n=OcTXZKq75dIphfT",
+       "email": "tricia_joqwctw_helfer\u0040tfbnw.net",
+       "password": "307156459"
     }
 
 # To Do:

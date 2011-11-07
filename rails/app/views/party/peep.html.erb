@@ -32,10 +32,10 @@
     </li>
     <% end %>
 
-    <% if Party::friends_in_common(@person, @peep).count == 0 %>
+    <% if @person.religion == @peep.religion %>
     <li>
       <div>Same Religious Views!</div>
-      
+      <%= @peep.religion %>
     </li>
     <% end %>
 

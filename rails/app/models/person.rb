@@ -79,7 +79,11 @@ private
     c = fb.statuses.map{|s| s.comments.count}.inject(0){|r,n| r + n}
     p = 0
     
-    ((((20 * (5 * c + 2 * l)) + f) / Math.sqrt(f)) + p).round
+    if (f > 0 )
+      ((((20 * (5 * c + 2 * l)) + f) / Math.sqrt(f)) + p).round
+    else
+      1
+    end
     
   end
   

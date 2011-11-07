@@ -32,7 +32,7 @@
     </li>
     <% end %>
 
-    <% if @person.religion == @peep.religion %>
+    <% if @person.religion == @peep.religion && !@peep.religion.nil?%>
     <li>
       <div>Same Religious Views!</div>
       <%= @peep.religion %>

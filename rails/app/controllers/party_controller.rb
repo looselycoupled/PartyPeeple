@@ -4,13 +4,7 @@ class PartyController < ApplicationController
   
   # display list of compatible peeps
   def index
-    # TODO: Fix queries for peeps
-    if @person.preference == "both"
-      @peeps = Person.where("id <> ? and preference is not null", @person.id)
-    else
-      @peeps = Person.where(:preference => @person.gender, :gender => @person.preference).where("id <> ?", @person.id)
-      # @peeps = Person.all
-    end
+    @peeps = Person.where("id <> ? and gender is not null", @person.id)
   end
 
   # display form to choose orientation

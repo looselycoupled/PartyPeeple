@@ -21,7 +21,14 @@ class PublicController < ApplicationController
       @person.first_name = @fb.first_name
       @person.birthday = @fb.birthday
       @person.gender = @fb.gender
+      @person.religion = @fb.religion
+      @person.political = @fb.political
       @person.relationship_status = @fb.relationship_status
+      if @fb.interested_in.count == 2
+        @person.preference = "both"
+      elsif @fb.interested_in.count == 1
+        @person.preference = @fb.interested_in[0]
+      end
       @person.save
 
       # add jobs to fetch more info

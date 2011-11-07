@@ -31,6 +31,17 @@
       No Mutual Friends
     </li>
     <% end %>
+
+    <% if Party::friends_in_common(@person, @peep).count == 0 %>
+    <li>
+      <div>Same Religious Views!</div>
+      
+    </li>
+    <% end %>
+
+
+
+
     
     <li>
       Friends in Common: <%= Party::friends_in_common(@person, @peep).count %>

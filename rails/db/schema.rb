@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111106002855) do
+ActiveRecord::Schema.define(:version => 20111107045309) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20111106002855) do
     t.string   "birthday"
     t.string   "relationship_status"
     t.integer  "digital_capital"
+    t.string   "political"
+    t.string   "religion"
   end
 
   add_index "people", ["identifier"], :name => "people_identifier_index"

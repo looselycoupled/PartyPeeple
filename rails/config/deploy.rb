@@ -24,6 +24,15 @@ ssh_options[:forward_agent] = true
 set :delayed_job_workers, 2
 
 
+# ----------------------------------------------------------------------------------
+# Diagnostic flag functions
+# ----------------------------------------------------------------------------------
+
+def colorize (text, color_code); return "\e[#{color_code}m#{text}\e[0m"; end
+def fails (text); logger.important(colorize(text,31)); end
+def warns (text); logger.info(colorize(text,33)); end
+def okays (text); logger.debug(colorize(text,32)); end
+
 
 
 namespace :deploy do 
@@ -142,6 +151,25 @@ namespace :deploy do
 
 end
 
+namespace :data do 
+  desc <<-DESC
+      Downloads production database
+  DESC
+  task :download do
+      db_settings = YAML.load_file("./config/database.yml")["production"]
+      filename = "#{application}.#{Time.now.to_f}.sql"
+
+      okays "Dumping MySQL"
+      run "mysqldump --user=#{db_settings["username"]} --password=#{db_settings["password"]} #{db_settings["database"]} | bzip2 -c > /tmp/#{filename}.bz"
+
+      okays "Downloading database dump to local machine"
+      get "/tmp/#{filename}.bz", "#{filename}.bz"
+
+      okays "MySQL dump extracted to #{filename}"
+      system "bzip2 -dc #{filename}.bz > #{filename}"
+      system "rm #{filename}.bz"
+  end
+end
 
 namespace :delayed_job do 
 

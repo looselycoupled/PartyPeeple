@@ -25,7 +25,7 @@
     <% end %>
     
     
-    <% if Party::friends_in_common(@person, @peep).count == 0 %>
+    <% if (Party::recommendation @person, @peep) == "fuck" && Party::friends_in_common(@person, @peep).count == 0 %>
     <li>
       <div>Tomorrow Morning Won't Be Awkward</div>
       No Mutual Friends
@@ -39,7 +39,16 @@
     </li>
     <% end %>
 
-
+    <% if true || (@person.favorite_books & @peep.favorite_books).count > 0 %>
+    <li>
+      <div>Same Favorite Book!</div>
+      <ul>
+      <% (@peep.favorite_books)[0..1].each do |book| %>
+          <li><img src='http://graph.facebook.com/<%= book.identifier %>/picture' /><br><%= book.name %></li>
+      <% end %>
+      </ul>
+    </li>
+    <% end %>
 
 
     

@@ -1,5 +1,11 @@
 <div id="fb-root"></div>
-<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+        }());
+</script>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -25,4 +31,4 @@
       return false;
    }
 </script>
-<a href="/." onclick="login();return false;"><img src="/images/facebook.png" /></a>
+<img onclick="login();" src="/images/facebook.png" />

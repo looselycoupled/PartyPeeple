@@ -1,16 +1,49 @@
+<section class="main">
+    <p class="sort">Sort by: <a href="">Arrival</a> | <a href="" class="active">Name</a></p>
+    <div class="currently clearfix">
+        <p>Showing C&#39;s</p>
+        <form method="GET" action="">
+            <select name="letter">
+                <option>A</option>
+                <option>B</option>
+                <option selected="selected">C</option>
+                <option>D</option>
+                <option>E</option>
+                <option>F</option>
+                <option>G</option>
+                <option>H</option>
+                <option>I</option>
+                <option>J</option>
+                <option>K</option>
+                <option>L</option>
+                <option>M</option>
+                <option>N</option>
+                <option>O</option>
+                <option>P</option>
+                <option>Q</option>
+                <option>R</option>
+                <option>S</option>
+                <option>T</option>
+                <option>U</option>
+                <option>V</option>
+                <option>W</option>
+                <option>X</option>
+                <option>Y</option>
+                <option>Z</option>
+            </select>
+        </form>
+    </div>
+    <% if @peeps.count > 0 %>
+    <ul class="profile-list clearfix">
+      <% @peeps.each do |p| %>
+        <li style="list-style-type:none; ">
+            <%= link_to image_tag("http://graph.facebook.com/#{p.identifier}/picture?type=square", :alt => p.first_name), :action => :peep, :identifier => p.identifier  %>
+            <%= link_to p.first_name, :action => :peep, :identifier => p.identifier %>
+        </li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>Nobody matching this criteria has opted-in.</p>
+    <% end %>
+</section>
 
-<p>View by: <%= link_to "arrival", :action => :index, :sort => 'arrival' %> |
-<%= link_to "name", :action => :index, :sort => 'name' %></p>
-
-<% if @peeps.count > 0 %>
-<ul id="peep-list">
-  <% @peeps.each do |p| %>
-    <li style="list-style-type:none; ">
-      <%= link_to image_tag("http://graph.facebook.com/#{p.identifier}/picture?type=square"), :action => :peep, :identifier => p.identifier  %><br>
-      <%= link_to p.first_name, :action => :peep, :identifier => p.identifier %></li>
-  <% end %>
-</ul>
-
-<% else %>
-  Looks like there's not enough people here yet.  Refresh this page in a couple minutes.
-<% end %>

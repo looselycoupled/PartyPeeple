@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Partypeeple</title>
-  <%#= stylesheet_link_tag :all %>
-  <%#= javascript_include_tag :defaults %>
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
-  <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
-  <%= csrf_meta_tag %>
-</head>
-<body>
-
-  <%= yield(:header) %>
-
-  
-
-<div class="menu">
-  <div class="greeting">Hey <%= (@person) ? @person.first_name : "buddy"  %>.
-  <% if authenticated? %><a href="/logout">logout</a><% end %>
-  </div>&nbsp;
-  
-  <%= yield(:nav) %>
-  
-</div>
-
-<div id="flash"><%= flash[:notice] %></div>
-
-<div class="content">
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <title>Party Peeple</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <%= stylesheet_link_tag "screen" %>
+        <script type="text/javascript" src="http://use.typekit.com/awr2bfm.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <%#= javascript_include_tag "jquery","script" %>
+        <%= csrf_meta_tag %>
+    </head>
+    <body <%= "id=\"#{@body_id}\"".html_safe if @body_id %> <%= "class=\"#{@body_class}\"".html_safe if @body_class %>>
+        <header>
+            <h1>Party Peeple</h1>
+        </header>
+<%= yield(:nav) %>
 <%= yield(:content) %>
-</div>
-
-
-
-
-
-</body>
+        <footer>
+            <p>Powered by e-Geaux, brought to you by <a href="">Pepys, Inc.</a></p>
+        </footer>
+        <script src="/javascripts/jquery.js" defer="defer"></script>
+        <script src="/javascripts/script.js" defer="defer"></script>
+    </body>
 </html>

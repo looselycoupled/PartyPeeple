@@ -1,6 +1,7 @@
 class PartyController < ApplicationController
   
   before_filter :orientation_check, :except => [:orientation, :choose]
+  before_filter :body_setup
   
   # display list of compatible peeps
   def index
@@ -9,6 +10,7 @@ class PartyController < ApplicationController
 
   # display form to choose orientation
   def orientation
+    @body_id = "orientation"
   end
   
   # display a person's details
@@ -36,6 +38,10 @@ class PartyController < ApplicationController
 
   
   private
+  
+  def body_setup
+    @body_class = "small"
+  end
   
   # has the person chosen a preference?  if not forward to the orientation form
   def orientation_check

@@ -1,17 +1,3 @@
-<h1>Party#about</h1>
-<p>Find me in app/views/party/about.html.erb</p>
-<%
-
-p = Person.find_by_identifier("737428913")
-fb = FbGraph::User.me(p.access_token).fetch
-likes = fb.likes
-
-f = likes.first
-%>
-<img src='http://graph.facebook.com/<%= f.identifier %>/picture?type=square' />
-<%= f.to_yaml %>
-
-
-<% likes.each do |p| %>
-  <p><%= p.name %> | <%= p.category %></p>
-<% end %>
+        <section class="main flatpage">
+            <p>About text...</p>
+        </section>

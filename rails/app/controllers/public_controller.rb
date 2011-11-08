@@ -4,6 +4,7 @@ class PublicController < ApplicationController
     if authenticated?
       redirect_to party_url
     end
+    @body_id = "homepage"
   end
 
   def login

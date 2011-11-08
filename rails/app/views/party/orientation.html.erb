@@ -1,11 +1,11 @@
-<h2>Confirm Orientation</h2>
-
-<p>We’re sorry, we’re unable to determine your sexual orientation.</p> 
-<p>What are you interested in?</p>
-
-<p>
-  <%= link_to "male", :action => :choose, :choice => "male" %> |
-  <%= link_to "female", :action => :choose, :choice => "female" %> |
-  <%= link_to "both", :action => :choose, :choice => "both" %>
-  
-</p>
+        <section class="pre-main freeform">
+            <p>Sorry, but we are unable to determine your sexual orientation.</p>
+            <p>What are you interested in?</p>
+        </section>
+        <section id="orientation" class="main list">
+            <ul>
+                <li class="men"><%= link_to "Men", :action => :choose, :choice => "male" %></li>
+                <li class="women"><%= link_to "Women", :action => :choose, :choice => "female" %></li>
+                <li class="both"><%= link_to "Both", :action => :choose, :choice => "both" %></li>
+            </ul>
+        </section>

@@ -1,23 +1,18 @@
-
 <% content_for :nav do %>
-
-  <% if authenticated? %>
-  <%= link_to "Peeps", party_url %> | 
-  <%= link_to "Help", help_url %> |
-  <%= link_to "About", about_url %>
-    <% if administrator? %>
-    | <%= link_to "Dashboard", :controller => :dashboard %>
-    <% end %>
+  <% if authenticated? && params[:action] != "orientation" %>
+        <nav>
+            <ul>
+                <li class="<%= tab_selector("index") %>"><%= link_to "Peeps", party_url %></li>
+                <li class="<%= tab_selector("help") %>"><%= link_to "Help", help_url %></li>
+                <li class="<%= tab_selector("about") %>"><%= link_to "About", about_url  %></li>
+          <% if administrator? %>
+                <!--li><%= link_to "Dashboard", :controller => :dashboard %></li-->
+          <% end %>
+            </ul>
+        </nav>
   <% end %>
-
 <% end %>
-
-
 <% content_for :content do %>
-  
-  <%= yield %>
-
+<%= yield %>
 <% end %>
-
-
 <%= render :file => 'layouts/application' %>

@@ -1,54 +1,80 @@
 
-  <img src='http://graph.facebook.com/<%= @peep.identifier %>/picture?type=normal' />
-  <h1><%= @peep.first_name %></h1>
-  <div class="dc">
-    <div class="title">DIGITAL CAPITAL</div>
-    <%= @peep.digital_capital || "Still calculating..."%>
-  </div>
+<section class="main freeform" id="profile">
+    <header class="clearfix">
+        <figure><%= image_tag "http://graph.facebook.com/#{@peep.identifier}/picture?type=normal" %></figure>
+        <h1><%= @peep.first_name %></h1>
+        <dl>
+            <dt>Digital Capital</dt>
+            <dd><%= @peep.digital_capital || "Still calculating..."%></dd>
+            <dt>Sign</dt>
+            <dd><%= @peep.birthday.try(:to_date).try(:zodiac_sign) %></dd>
+            <dt class="rec">Recommendation</dt>
+            <dd class="rec"><%= (Party::recommendation @person, @peep).titleize %></dd>
+        </dl>
+    </header>
+    <h2>Conversation Starters</h2>
+    <ul class="starters">
+      
+        <% if @person.birthday == @peep.birthday || true%>
+        <li class="clearfix">
+            <h3>Same birthday</h3>
+            <h4>Born <%= @peep.birthday %></h4>
+        </li>
+        <% end %>
+      
+        <% if (Party::recommendation @person, @peep) == "F#!%" && Party::friends_in_common(@person, @peep).count == 0 %>
+        <li class="clearfix">
+            <h3>Tomorrow Morning Won't Be Awkward</h3>
+            <h4>No Mutual Friends</h4>
+        </li>
+        <% end %>
 
-  <div class="sign">
-    <div class="title">SIGN</div>
-    <%= @peep.birthday.try(:to_date).try(:zodiac_sign) %>
-  </div>
+        <% if @person.religion == @peep.religion && !@peep.religion.nil?%>
+        <li class="clearfix">
+            <h3>Same Religious Views!</h3>
+            <h4><%= @peep.religion %></h4>
+        </li>
+        <% end %>
 
-  <div class="recommendation">
-    <div class="title">RECOMMENDATION</div>
-    <%= (Party::recommendation @person, @peep).titleize %>
-  </div>
+        <% if true || (@person.favorite_books & @peep.favorite_books).count > 0 %>
+            <% (@peep.favorite_books)[0..1].each do |book| %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= book.identifier %>/picture' />
+            <h3>Same Favorite Book!</h3>
+            <h4><%= book.name %></h4></li>
+        </li>
+            <% end %>
+        <% end %>
+        
+        
+        <!-- 
+        <li class="clearfix">
+            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/369846_501926061_551262373_q.jpg" width="50" height="50" />
+            <h3>Mutual Friend</h3>
+            <h4>Amy Saidman</h4>
+        </li>
+        <li class="clearfix">
+            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/276452_7807422276_491134441_q.jpg" width="50" height="50" />
+            <h3>Watches</h3>
+            <h4>How I Met Your Mother</h4>
+        </li>
+        <li class="clearfix">
+            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/261137_94421890077_4168950_q.jpg" width="50" height="50" />
+            <h3>Roots for</h3>
+            <h4>New York Mets</h4>
+        </li> -->
+    </ul>
+    
+    
+    <div class="wingpeeps clearfix">
+        <p><img src="/images/goose-maverick.jpg" />You don't have to go alone. Pick up a wingpeep at the booth.</p>
+    </div>
+</section>
 
-  <hr>
-  <h2>Conversation Starters</h2>
-  
+
   <ul>
-    <% if @person.birthday == @peep.birthday %>
-    <li><div class="supertitle">Same birthday</div>Born <%= @peep.birthday %></li>
-    <% end %>
     
     
-    <% if (Party::recommendation @person, @peep) == "F#!%" && Party::friends_in_common(@person, @peep).count == 0 %>
-    <li>
-      <div>Tomorrow Morning Won't Be Awkward</div>
-      No Mutual Friends
-    </li>
-    <% end %>
-
-    <% if @person.religion == @peep.religion && !@peep.religion.nil?%>
-    <li>
-      <div>Same Religious Views!</div>
-      <%= @peep.religion %>
-    </li>
-    <% end %>
-
-    <% if true || (@person.favorite_books & @peep.favorite_books).count > 0 %>
-    <li>
-      <div>Same Favorite Book!</div>
-      <ul>
-      <% (@peep.favorite_books)[0..1].each do |book| %>
-          <li><img src='http://graph.facebook.com/<%= book.identifier %>/picture' /><br><%= book.name %></li>
-      <% end %>
-      </ul>
-    </li>
-    <% end %>
 
 
     

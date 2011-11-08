@@ -2,7 +2,7 @@ Partypeeple::Application.routes.draw do
 
   get "party/orientation"
 
-  get "party/index", :as => :party
+  match "party/index/(:letter)" => 'party#index', :as => :party
 
   match 'login' => 'public#login'
 

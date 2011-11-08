@@ -5,7 +5,12 @@ class PartyController < ApplicationController
   
   # display list of compatible peeps
   def index
-    @peeps = Person.where("id <> ? and gender is not null", @person.id)
+    # TODO: veryify that params[:letter] is a letter
+    if params[:letter].nil?
+      @peeps = Person.where("id <> ? and gender is not null", @person.id).order(:updated_at)
+    else
+      @peeps = Person.where("first_name like ? and id <> ? and gender is not null", params[:letter] + "%",  @person.id)      
+    end
   end
 
   # display form to choose orientation

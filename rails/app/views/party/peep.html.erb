@@ -17,6 +17,7 @@
       
         <% if @person.birthday == @peep.birthday || true%>
         <li class="clearfix">
+            <%= image_tag "/images/icons/conversation/birthday.jpg" %>
             <h3>Same birthday</h3>
             <h4>Born <%= @peep.birthday %></h4>
         </li>

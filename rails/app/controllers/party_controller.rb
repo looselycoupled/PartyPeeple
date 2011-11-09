@@ -22,6 +22,13 @@ class PartyController < ApplicationController
   def peep
     @peep = Person.find_by_identifier(params[:identifier])
     @friends_in_common = Party::friends_in_common(@person, @peep)
+    @shared_books = @person.books & @peep.books
+    @shared_tv_shows = @person.tv_shows & @peep.tv_shows
+    @shared_movies = @person.movies & @peep.movies
+    @shared_bands = @person.bands & @peep.bands
+    
+    
+    
   end
 
   # save orientation/preference choice

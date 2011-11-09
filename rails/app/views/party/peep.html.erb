@@ -47,8 +47,8 @@
         </li>
         <% end %>
 
-        <% if Rails.env == "development" || (@person.favorite_books & @peep.favorite_books).count > 0 %>
-            <% (@peep.favorite_books)[0..1].each do |book| %>
+        <% if Rails.env == "development" || (@person.books & @peep.books).count > 0 %>
+            <% (@peep.books)[0..1].each do |book| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= book.identifier %>/picture' />
             <h3>Same Favorite Book!</h3>
@@ -60,12 +60,42 @@
         <% if Rails.env == "development" || @friends_in_common.count > 0 %>
             <% 
                @friends_in_common[0..1].each do |friend| 
-               friend.first_name ||= friend.name.split(" ")[0]
+                   friend.first_name ||= friend.name.split(" ")[0]
             %>
         <li class="clearfix">
             <%= image_tag("http://graph.facebook.com/#{friend.identifier}/picture?type=square", :alt => friend.first_name) %>
             <h3>Mutual Friend</h3>
             <h4><%= friend.first_name %></h4></li>
+        </li>
+            <% end %>
+        <% end %>
+        
+        <% if Rails.env == "development" || @shared_tv_shows > 0 %>
+            <% @shared_tv_shows[0..1].each do |show| %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= show.identifier %>/picture' />
+            <h3>Same Favorite Show!</h3>
+            <h4><%= show.name %></h4></li>
+        </li>
+            <% end %>
+        <% end %>
+        
+        <% if Rails.env == "development" || @shared_movies > 0 %>
+            <% @shared_movies[0..1].each do |movie| %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= movie.identifier %>/picture' />
+            <h3>Same Favorite Movie!</h3>
+            <h4><%= movie.name %></h4></li>
+        </li>
+            <% end %>
+        <% end %>
+        
+        <% if Rails.env == "development" || @shared_bands > 0 %>
+            <% @shared_bands[0..1].each do |band| %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= band.identifier %>/picture' />
+            <h3>Same Favorite Band!</h3>
+            <h4><%= band.name %></h4></li>
         </li>
             <% end %>
         <% end %>

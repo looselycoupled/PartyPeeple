@@ -64,10 +64,24 @@ class Person < ActiveRecord::Base
     !preference.nil?
   end
   
-  def favorite_books
+  def books
     pages.select{|p| p.category == "Book"}
   end
   
+  def tv_shows
+    pages.select{|p| p.category == "Tv show"}
+  end
+  
+  def movies
+    pages.select{|p| p.category == "Movie"}
+  end
+  
+  def bands
+    pages.select{|p| p.category == "Musician/band"}
+  end
+  
+
+
 
 private
   

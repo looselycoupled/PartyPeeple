@@ -1,7 +1,7 @@
 defaults: &defaults
-  app_perms: "read_stream,user_about_me,user_activities,user_birthday,user_education_history,user_interests,user_likes,user_relationships,user_relationship_details,user_religion_politics,user_work_history,email,offline_access"
+  app_perms: "read_stream,user_birthday,user_likes,user_relationship_details,user_religion_politics,email,offline_access"
 
-# removed permissions: user_photos,user_hometown,user_groups,user_events,
+# removed permissions: user_about_me,user_photos,user_hometown,user_groups,user_events,user_work_history,user_education_history,user_activities,user_interests,user_relationships,
   
 development: 
   <<: *defaults

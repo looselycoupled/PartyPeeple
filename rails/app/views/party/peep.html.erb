@@ -118,7 +118,7 @@
         <%  end %>
         
         <% 
-            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+            if Rails.env == "development" || @primary_matches < @primary_match_limit 
                 unique_books = @peep.books - @person.books
                 if unique_books.count > 0
                     @primary_matches += 1
@@ -134,7 +134,7 @@
         %>
 
         <% 
-            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+            if Rails.env == "development" || @primary_matches < @primary_match_limit 
                 unique_tv_shows = @peep.tv_shows - @person.tv_shows
                 if unique_tv_shows.count > 0
                     @primary_matches += 1
@@ -151,7 +151,7 @@
         %>
 
         <% 
-            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+            if Rails.env == "development" || @primary_matches < @primary_match_limit 
                 unique_movies = @peep.movies - @person.movies
                 if unique_movies.count > 0
                     @primary_matches += 1
@@ -168,7 +168,7 @@
         %>
 
         <% 
-            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+            if Rails.env == "development" || @primary_matches < @primary_match_limit 
                 unique_teams = @peep.teams - @person.teams
                 if unique_teams.count > 0
                     @primary_matches += 1

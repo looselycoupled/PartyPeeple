@@ -15,29 +15,39 @@
     <h2>Conversation Starters</h2>
     <ul class="starters">
       
-        <% if @person.birthday == @peep.birthday || true%>
+        <% if Rails.env == "development" || @person.birthday == @peep.birthday %>
         <li class="clearfix">
             <%= image_tag "/images/icons/conversation/birthday.jpg" %>
             <h3>Same birthday</h3>
-            <h4>Born <%= @peep.birthday %></h4>
+            <h4>Born <%= @peep.birthday.to_date.to_formatted_s(:long_ordinal) %></h4>
         </li>
         <% end %>
       
-        <% if (Party::recommendation @person, @peep) == "F#!%" && Party::friends_in_common(@person, @peep).count == 0 %>
+        <% if Rails.env == "development" ||  ((Party::recommendation @person, @peep) == "F#!%" && Party::friends_in_common(@person, @peep).count == 0) %>
         <li class="clearfix">
+            <%= image_tag "/images/icons/conversation/nofriends.jpg" %>
             <h3>Tomorrow Morning Won't Be Awkward</h3>
             <h4>No Mutual Friends</h4>
         </li>
         <% end %>
 
-        <% if @person.religion == @peep.religion && !@peep.religion.nil?%>
+        <% if Rails.env == "development" || (@person.religion == @peep.religion && !@peep.religion.nil?) %>
         <li class="clearfix">
+            <%= image_tag "/images/icons/conversation/religious.jpg" %>
             <h3>Same Religious Views!</h3>
             <h4><%= @peep.religion %></h4>
         </li>
         <% end %>
 
-        <% if true || (@person.favorite_books & @peep.favorite_books).count > 0 %>
+        <% if Rails.env == "development" || (@person.political == @peep.political && !@peep.political.nil?) %>
+        <li class="clearfix">
+            <%= image_tag "/images/icons/conversation/constitution.jpg" %>
+            <h3>Same Religious Views!</h3>
+            <h4><%= @peep.political %></h4>
+        </li>
+        <% end %>
+
+        <% if Rails.env == "development" || (@person.favorite_books & @peep.favorite_books).count > 0 %>
             <% (@peep.favorite_books)[0..1].each do |book| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= book.identifier %>/picture' />
@@ -47,23 +57,21 @@
             <% end %>
         <% end %>
         
-        
-        <!-- 
+        <% if Rails.env == "development" || @friends_in_common.count > 0 %>
+            <% 
+               @friends_in_common[0..1].each do |friend| 
+               friend.first_name ||= friend.name.split(" ")[0]
+            %>
         <li class="clearfix">
-            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/369846_501926061_551262373_q.jpg" width="50" height="50" />
+            <%= image_tag("http://graph.facebook.com/#{friend.identifier}/picture?type=square", :alt => friend.first_name) %>
             <h3>Mutual Friend</h3>
-            <h4>Amy Saidman</h4>
+            <h4><%= friend.first_name %></h4></li>
         </li>
-        <li class="clearfix">
-            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/276452_7807422276_491134441_q.jpg" width="50" height="50" />
-            <h3>Watches</h3>
-            <h4>How I Met Your Mother</h4>
-        </li>
-        <li class="clearfix">
-            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/261137_94421890077_4168950_q.jpg" width="50" height="50" />
-            <h3>Roots for</h3>
-            <h4>New York Mets</h4>
-        </li> -->
+            <% end %>
+        <% end %>
+        
+        
+
     </ul>
     
     
@@ -71,17 +79,3 @@
         <p><img src="/images/goose-maverick.jpg" />You don't have to go alone. Pick up a wingpeep at the booth.</p>
     </div>
 </section>
-
-
-  <ul>
-    
-    
-
-
-    
-    <li>
-      Friends in Common: <%= Party::friends_in_common(@person, @peep).count %>
-    </li>
-  </ul>
-
-

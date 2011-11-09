@@ -70,7 +70,7 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_tv_shows > 0 %>
+        <% if Rails.env == "development" || @shared_tv_shows.count > 0 %>
             <% @shared_tv_shows[0..1].each do |show| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= show.identifier %>/picture' />
@@ -80,7 +80,7 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_movies > 0 %>
+        <% if Rails.env == "development" || @shared_movies.count > 0 %>
             <% @shared_movies[0..1].each do |movie| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= movie.identifier %>/picture' />
@@ -90,7 +90,7 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_bands > 0 %>
+        <% if Rails.env == "development" || @shared_bands.count > 0 %>
             <% @shared_bands[0..1].each do |band| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= band.identifier %>/picture' />

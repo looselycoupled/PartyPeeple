@@ -15,7 +15,9 @@
     <h2>Conversation Starters</h2>
     <ul class="starters">
       
-        <% if Rails.env == "development" || @person.birthday == @peep.birthday %>
+        <% if Rails.env == "development" || @person.birthday == @peep.birthday 
+            @primary_matches += 1
+        %>
         <li class="clearfix">
             <%= image_tag "/images/icons/conversation/birthday.jpg" %>
             <h3>Same birthday</h3>
@@ -23,7 +25,9 @@
         </li>
         <% end %>
       
-        <% if Rails.env == "development" ||  ((Party::recommendation @person, @peep) == "F#!%" && Party::friends_in_common(@person, @peep).count == 0) %>
+        <% if Rails.env == "development" ||  ((Party::recommendation @person, @peep) == "F#!%" && Party::friends_in_common(@person, @peep).count == 0) 
+            @primary_matches += 1
+        %>
         <li class="clearfix">
             <%= image_tag "/images/icons/conversation/nofriends.jpg" %>
             <h3>Tomorrow Morning Won't Be Awkward</h3>
@@ -31,7 +35,9 @@
         </li>
         <% end %>
 
-        <% if Rails.env == "development" || (@person.religion == @peep.religion && !@peep.religion.nil?) %>
+        <% if Rails.env == "development" || (@person.religion == @peep.religion && !@peep.religion.nil?) 
+            @primary_matches += 1
+        %>
         <li class="clearfix">
             <%= image_tag "/images/icons/conversation/religious.jpg" %>
             <h3>Same Religious Views!</h3>
@@ -39,7 +45,9 @@
         </li>
         <% end %>
 
-        <% if Rails.env == "development" || (@person.political == @peep.political && !@peep.political.nil?) %>
+        <% if Rails.env == "development" || (@person.political == @peep.political && !@peep.political.nil?) 
+            @primary_matches += 1
+        %>
         <li class="clearfix">
             <%= image_tag "/images/icons/conversation/constitution.jpg" %>
             <h3>Same Religious Views!</h3>
@@ -47,19 +55,11 @@
         </li>
         <% end %>
 
-        <% if Rails.env == "development" || (@person.books & @peep.books).count > 0 %>
-            <% (@peep.books)[0..1].each do |book| %>
-        <li class="clearfix">
-            <img src='http://graph.facebook.com/<%= book.identifier %>/picture' />
-            <h3>Same Favorite Book!</h3>
-            <h4><%= book.name %></h4></li>
-        </li>
-            <% end %>
-        <% end %>
-        
-        <% if Rails.env == "development" || @friends_in_common.count > 0 %>
+        <% if Rails.env == "development" || @friends_in_common.count > 0 
+            @primary_matches += 1
+        %>
             <% 
-               @friends_in_common[0..1].each do |friend| 
+               @friends_in_common.shuffle[0..1].each do |friend| 
                    friend.first_name ||= friend.name.split(" ")[0]
             %>
         <li class="clearfix">
@@ -70,7 +70,21 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_tv_shows.count > 0 %>
+        <% if Rails.env == "development" || (@person.books & @peep.books).count > 0 
+            @primary_matches += 1
+        %>
+            <% (@peep.books)[0..1].each do |book| %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= book.identifier %>/picture' />
+            <h3>Same Favorite Book!</h3>
+            <h4><%= book.name %></h4></li>
+        </li>
+            <% end %>
+        <% end %>
+        
+        <% if Rails.env == "development" || @shared_tv_shows.count > 0 
+            @primary_matches += 1
+        %>
             <% @shared_tv_shows[0..1].each do |show| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= show.identifier %>/picture' />
@@ -80,8 +94,9 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_movies.count > 0 %>
-            <% @shared_movies[0..1].each do |movie| %>
+        <% if Rails.env == "development" || @shared_movies.count > 0 
+                @primary_matches += 1
+                @shared_movies[0..1].each do |movie| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= movie.identifier %>/picture' />
             <h3>Same Favorite Movie!</h3>
@@ -90,15 +105,87 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_bands.count > 0 %>
-            <% @shared_bands[0..1].each do |band| %>
+        <% if Rails.env == "development" || @shared_bands.count > 0 
+                @primary_matches += 1
+                @shared_bands[0..1].each do |band| 
+        %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= band.identifier %>/picture' />
             <h3>Same Favorite Band!</h3>
             <h4><%= band.name %></h4></li>
         </li>
-            <% end %>
-        <% end %>
+                <% end %>
+        <%  end %>
+        
+        <% 
+            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+                unique_books = @peep.books - @person.books
+                if unique_books.count > 0
+                    @primary_matches += 1
+        %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= unique_books[0].identifier %>/picture' />
+            <h3>Book</h3>
+            <h4><%= unique_books[0].name %></h4></li>
+        </li>
+        <%      
+                end 
+            end 
+        %>
+
+        <% 
+            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+                unique_tv_shows = @peep.tv_shows - @person.tv_shows
+                if unique_tv_shows.count > 0
+                    @primary_matches += 1
+                    show = unique_tv_shows.sample
+        %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= show.identifier %>/picture' />
+            <h3>Television Show</h3>
+            <h4><%= show.name %></h4></li>
+        </li>
+        <%      
+                end 
+            end 
+        %>
+
+        <% 
+            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+                unique_movies = @peep.movies - @person.movies
+                if unique_movies.count > 0
+                    @primary_matches += 1
+                    movie = unique_movies.sample
+        %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= movie.identifier %>/picture' />
+            <h3>Movie</h3>
+            <h4><%= movie.name %></h4></li>
+        </li>
+        <%      
+                end 
+            end 
+        %>
+
+        <% 
+            if Rails.env == "development" || @primary_matches <= @primary_match_limit 
+                unique_teams = @peep.teams - @person.teams
+                if unique_teams.count > 0
+                    @primary_matches += 1
+                    team = unique_teams.sample
+        %>
+        <li class="clearfix">
+            <img src='http://graph.facebook.com/<%= team.identifier %>/picture' />
+            <h3>Favorite Team</h3>
+            <h4><%= team.name %></h4></li>
+        </li>
+        <%      
+                end 
+            end 
+        %>
+        
+        
+        
         
         
 

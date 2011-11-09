@@ -27,6 +27,8 @@ class PartyController < ApplicationController
     @shared_movies = @person.movies & @peep.movies
     @shared_bands = @person.bands & @peep.bands
     
+    @primary_matches = 0
+    @primary_match_limit = 5
     
     
   end

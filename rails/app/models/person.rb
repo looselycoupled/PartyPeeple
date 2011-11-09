@@ -80,6 +80,10 @@ class Person < ActiveRecord::Base
     pages.select{|p| p.category == "Musician/band"}
   end
   
+  def teams
+    pages.select{|p| p.category == "Professional sports team"}
+  end
+  
 
 
 

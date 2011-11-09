@@ -9,7 +9,7 @@
             <dt>Sign</dt>
             <dd><%= @peep.birthday.try(:to_date).try(:zodiac_sign) %></dd>
             <dt class="rec">Recommendation</dt>
-            <dd class="rec"><%= (Party::recommendation @person, @peep).titleize %></dd>
+            <dd class="rec"><%= @recommendation %></dd>
         </dl>
     </header>
     <h2>Conversation Starters</h2>
@@ -191,8 +191,9 @@
 
     </ul>
     
-    
+    <% if @recommendation.titleize != "Friend" %>
     <div class="wingpeeps clearfix">
         <p><img src="/images/goose-maverick.jpg" />You don't have to go alone. Pick up a wingpeep at the booth.</p>
     </div>
+    <% end %>
 </section>

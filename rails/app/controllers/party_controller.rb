@@ -21,6 +21,7 @@ class PartyController < ApplicationController
   # display a person's details
   def peep
     @peep = Person.find_by_identifier(params[:identifier])
+    @recommendation = (Party::recommendation @person, @peep).titleize
     @friends_in_common = Party::friends_in_common(@person, @peep)
     @shared_books = @person.books & @peep.books
     @shared_tv_shows = @person.tv_shows & @peep.tv_shows

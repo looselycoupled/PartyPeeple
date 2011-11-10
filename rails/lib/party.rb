@@ -10,7 +10,8 @@ module Party
       if ((target.digital_capital || 0) >= (person.digital_capital || 0) - 50)
         "flirt"
       else
-        "F#!%"
+        # "F#!%"
+        "flip"
       end
     else
       "friend"

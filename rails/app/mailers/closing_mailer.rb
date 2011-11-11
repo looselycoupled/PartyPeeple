@@ -3,7 +3,7 @@ class ClosingMailer < ActionMailer::Base
 
   def user_data_confirmation(user)
     @user = user
-    subject = "Rake Test"
+    subject = "Party Peeple"
     subject += " (#{Rails.env})" if Rails.env.development?
     mail(:to => user.email, :subject => subject)
   end

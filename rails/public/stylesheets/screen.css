@@ -205,8 +205,23 @@ body > footer a{
     #facebook figcaption{
         margin-top: 5px;
     }
+    #facebook a{
+        width: 140px;
+        height: 24px;
+        display: block;
+        margin: 0 auto;
+        text-indent: -999em;
+        overflow: hidden;
+        background: url(../images/facebook.png);
+    }
 
-
+        @media all and (-webkit-min-device-pixel-ratio: 2) {
+            a.twitter {
+                background-image: url('../images/facebook-retina.png');
+                background-size: 50%;
+            }
+        }
+    
 .freeform{
     font-size: 14px;
 }
@@ -256,6 +271,12 @@ body > footer a{
     height: 24px;
     background: url(../images/xc.png) no-repeat 0 -26px;
 }
+    @media all and (-webkit-min-device-pixel-ratio: 2) {
+        .xc header {
+            background-image: url('../images/xc-retina.png');
+            background-size: 50%;
+        }
+    }
     .xc header.hidden{
         background-position: 0 0;
     }
@@ -559,10 +580,12 @@ body > footer a{
 .wingpeeps{
     background: #c53131;
     color: #FFF;
+    text-decoration: none;
     font-size: 13px;
     line-height: 1.31;
     margin-top: 20px;
     padding: 12px;
+    display: block;
 }
     .wingpeeps p{
         margin: 0;

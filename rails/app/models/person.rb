@@ -8,6 +8,7 @@ class Person < ActiveRecord::Base
 
   zodiac_reader :birthday
 
+  scope :partiers, where("gender is not null")
   scope :males, where(:gender => "male")
   scope :females, where(:gender => "female")
   scope :leaderboard, where("digital_capital is not null").order("digital_capital desc").limit(5)
@@ -15,7 +16,7 @@ class Person < ActiveRecord::Base
 
   def self.percentage_of_people(num)
     begin
-      (num / Person.count.to_f * 100).round
+      (num / Person.partiers.count.to_f * 100).round
     rescue
       0
     end

@@ -12,5 +12,7 @@
 
 <ul>
     <!-- Should only show up in the rotation if there are > 130 people signed up. It should be a random assortment of 130 of those people -->
-    <li><img alt="Picture?type=square" src="http://graph.facebook.com/584686313/picture?type=square"></li>
+    <% Person.partiers.sample(130).each do |p| %>
+    <li><%= image_tag "http://graph.facebook.com/#{p.identifier}/picture?type=square" %></li>
+    <% end %>
 <ul>

@@ -70,10 +70,10 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || (@person.books & @peep.books).count > 0 
+        <% if Rails.env == "development" || @shared_books.count > 0 
             @interest_matches += 1
         %>
-            <% (@peep.books)[0..1].each do |book| %>
+            <% @shared_books[0..1].each do |book| %>
         <li class="clearfix">
             <img src='http://graph.facebook.com/<%= book.identifier %>/picture' />
             <h3>Same Favorite Book!</h3>

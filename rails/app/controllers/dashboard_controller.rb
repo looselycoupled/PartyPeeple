@@ -4,15 +4,16 @@ class DashboardController < ApplicationController
   before_filter :require_security
   
   def index
-    # @people = Person.all
-    @people = Person.where("identifier in ('737428913')") 
-    @people.each do |u|
-      ClosingMailer.user_data_confirmation(u).delay.deliver
-    end
-    
-    
   end
   
+  def closing_notification
+    @people = Person.where("email is not null") 
+    @people.each do |u|
+      ClosingMailer.delay.user_data_confirmation(u)
+    end
+  end
+  
+
   def reset
     Party::cleanup
     logger.info "INFO: Application data reset"
@@ -20,6 +21,7 @@ class DashboardController < ApplicationController
     cookies.delete "fbsr_#{FB_CONFIG[:app_id]}"
     redirect_to root_url, :notice => "App has been reset!"
   end
+
   
   private
   

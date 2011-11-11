@@ -8,6 +8,21 @@ class Person < ActiveRecord::Base
 
   zodiac_reader :birthday
 
+  scope :males, where(:gender => "male")
+  scope :females, where(:gender => "female")
+
+
+  def self.percentage_of_people(num)
+    begin
+      (num / Person.count.to_f * 100).round
+    rescue
+      0
+    end
+  end
+
+
+
+
   # provide first_name if not populated (move to create callback?)
   def first_name
     if read_attribute(:first_name).nil?

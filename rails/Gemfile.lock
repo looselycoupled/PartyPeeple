@@ -48,6 +48,7 @@ GEM
       httpclient (>= 2.2.0.2)
       rack-oauth2 (>= 0.9.4)
     funtimes (0.4.0)
+    googlecharts (1.6.8)
     highline (1.6.2)
     httpclient (2.2.3)
     i18n (0.5.0)
@@ -120,6 +121,7 @@ DEPENDENCIES
   capistrano
   delayed_job
   fb_graph
+  googlecharts
   mysql2 (~> 0.2.6)
   rails (= 3.0.9)
   ruby-debug

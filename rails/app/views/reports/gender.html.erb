@@ -1,0 +1,7 @@
+<div class="stat">
+  <h1>Gender Breakdown</h1>
+  <img src="<%= Gchart.pie(:size => "600x400", 
+    :data => [@males, @females], 
+    :labels => ["Male: #{Person.percentage_of_people(@males)}%","Female: #{Person.percentage_of_people(@females)}%"]) 
+  %>" style="border : 0;"/>
+</div>

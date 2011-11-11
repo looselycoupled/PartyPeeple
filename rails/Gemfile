@@ -10,6 +10,8 @@ gem 'delayed_job'
 
 gem 'zodiac', '>= 0.2'
 
+gem 'googlecharts'
+
 group :development do
   gem 'ruby-debug'
   gem 'capistrano'

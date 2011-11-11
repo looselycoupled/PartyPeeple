@@ -216,9 +216,9 @@ body > footer a{
     }
 
         @media all and (-webkit-min-device-pixel-ratio: 2) {
-            a.twitter {
+            #facebook a {
                 background-image: url('../images/facebook-retina.png');
-                background-size: 50%;
+                background-size: 140px 24px;
             }
         }
     
@@ -274,7 +274,7 @@ body > footer a{
     @media all and (-webkit-min-device-pixel-ratio: 2) {
         .xc header {
             background-image: url('../images/xc-retina.png');
-            background-size: 50%;
+            background-size: 24px;
         }
     }
     .xc header.hidden{

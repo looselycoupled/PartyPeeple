@@ -1,0 +1,13 @@
+<div class="stat">
+  
+  <h1>Highest Digital Capital</h1>
+
+  <ul style="list-style-type: none;">
+    <% Person.leaderboard.each do |person| %>
+    <li>
+        <h4><%= image_tag "http://graph.facebook.com/#{person.identifier}/picture?type=square" %><br><%= person.first_name %>: <%= person.digital_capital %></h4>
+    </li>
+    <% end %>
+  </ul>
+  
+</div>

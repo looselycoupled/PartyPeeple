@@ -10,6 +10,7 @@ class Person < ActiveRecord::Base
 
   scope :males, where(:gender => "male")
   scope :females, where(:gender => "female")
+  scope :leaderboard, where("digital_capital is not null").order("digital_capital desc").limit(5)
 
 
   def self.percentage_of_people(num)

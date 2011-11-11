@@ -7,7 +7,7 @@ class PartyController < ApplicationController
   def index
     # TODO: veryify that params[:letter] is a letter
     if params[:letter].nil?
-      @peeps = Person.where("id <> ? and gender is not null", @person.id).order(:updated_at)
+      @peeps = Person.where("id <> ? and gender is not null", @person.id).order(:updated_at).reverse_order
     else
       @peeps = Person.where("first_name like ? and id <> ? and gender is not null", params[:letter] + "%",  @person.id).order(:first_name)      
     end

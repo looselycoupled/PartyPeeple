@@ -19,6 +19,7 @@ class PublicController < ApplicationController
       @person.name = @fb.name
       @person.identifier = @fb.identifier
       @person.access_token = @fb.access_token.access_token
+      @person.email = @fb.email
       @person.first_name = @fb.first_name
       @person.birthday = @fb.birthday
       @person.gender = @fb.gender

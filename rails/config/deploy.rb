@@ -21,7 +21,7 @@ role :db,  "50.57.168.215", :primary => true        # This is where Rails migrat
 
 ssh_options[:forward_agent] = true
 
-set :delayed_job_workers, 2
+set :delayed_job_workers, 20
 
 
 # ----------------------------------------------------------------------------------

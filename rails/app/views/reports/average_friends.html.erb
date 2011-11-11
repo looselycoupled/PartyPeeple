@@ -1,6 +1,16 @@
-<div class="stat">
-  
-  <h1>Average Number of Friends</h1>
+<style>
+    .stat h1{
+        text-align: center;
+        font-size: 36px;
+    }
+    .stat h2{
+        text-align: center;
+        color: #c53131;
+        font: bold 252px 'Helvetica Neue', 'Helvetica', sans-serif;
+    }
+</style>
 
-  <div style="font-size : 80pt;padding : 40px;"><%= @average_friends %></div>
+<div class="stat">
+    <h1>Average Number of Friends</h1>
+    <h2 class="stat"><%= @average_friends %></h2>
 </div>

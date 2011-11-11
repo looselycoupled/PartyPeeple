@@ -3,11 +3,50 @@
   <h1>Highest Digital Capital</h1>
 
   <ul style="list-style-type: none;">
-    <% Person.leaderboard.each do |person| %>
-    <li>
-        <h4><%= image_tag "http://graph.facebook.com/#{person.identifier}/picture?type=square" %><br><%= person.first_name %>: <%= person.digital_capital %></h4>
-    </li>
-    <% end %>
   </ul>
   
 </div>
+
+<style>
+    ol{
+        -moz-column-count: 3;
+        -moz-column-gap: 50px;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 50px;
+        column-count: 3;
+        column-gap: 50px;
+        list-style-type: decimal;
+    }
+    ol img{
+        float: left;
+        opacity: 0.3;
+        margin-right: 20px;
+    }
+    li{
+        margin-bottom: 20px;
+        font: 18px 'Helvetica Neue', 'Helvetica', sans-serif;
+        color: #888;
+    }
+        li strong{
+            display: block;
+            font-size: 24px;
+            color: #333;
+        }
+    li:before, li:after{
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    li:after{
+        clear: both;
+    }
+</style>
+
+<h1>Digital Capital Leaderboard</h1>
+<ol>
+    <!-- There should be a limit of 18 -->
+    <% Person.leaderboard.each do |person| %>
+        <li><%= image_tag "http://graph.facebook.com/#{person.identifier}/picture?type=square" %><strong><%= person.first_name %></strong> <%= person.digital_capital %></li>
+    <% end %>
+</ol>

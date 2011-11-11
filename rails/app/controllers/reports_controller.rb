@@ -10,7 +10,8 @@ class ReportsController < ApplicationController
   end
   
   def average_friends
-    @average_friends = Person.partiers.inject(0){|a,b| a + b.friends.count} / Person.partiers.count
+    friend_counts = ActiveRecord::Base.connection.execute("select count(friendships.friend_id) from people inner join friendships on people.id = friendships.person_id where gender is not null group by name").to_a.flatten
+    @average_friends = friend_counts.inject(0){|a,b| a + b} / friend_counts.size
   end
   
 end

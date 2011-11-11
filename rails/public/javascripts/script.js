@@ -1,11 +1,15 @@
 (function($){
 
+    function nothingToDo () {
+        return { 'init': function() { } };
+    }
+
     window.PP = {
 
         'headerImage': function(){
             var $h = $('body > header');
             if(!$h.length){
-                return;
+                return nothingToDo();
             }
             var $w = $(window),
                 resizeImage = function(evt){
@@ -15,17 +19,38 @@
                 };
             $w.resize(resizeImage).scroll(resizeImage);
             resizeImage();
-            return {};
+            return nothingToDo();
         },
 
         'autoSubmit': function(){
             var $f = $('.currently form');
             if(!$f.length){
-                return;
+                return nothingToDo();
             }
             $f.find('select').change(function(){
                 $(this).closest('form').submit();
             });
+            return nothingToDo();
+        },
+
+        'xc': function(){
+            var $xc = $('.xc');
+            if(!$xc.length){
+                return nothingToDo();
+            }
+            $xc.each(function(index, element){
+                var $e = $(element),
+                    $toggler = $e.children('header'),
+                    $toToggle = $e.children(':not(header)'),
+                    showHide = function(evt){
+                        $toToggle.toggle();
+                        $toggler.toggleClass('hidden');
+                    };
+                $toToggle.toggle();
+                $toggler.toggleClass('hidden');
+                $toggler.click(showHide);
+            });
+            return nothingToDo();
         }
         
     };

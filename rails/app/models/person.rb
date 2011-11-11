@@ -11,7 +11,7 @@ class Person < ActiveRecord::Base
   scope :partiers, where("gender is not null")
   scope :males, where(:gender => "male")
   scope :females, where(:gender => "female")
-  scope :leaderboard, where("digital_capital is not null").order("digital_capital desc").limit(5)
+  scope :leaderboard, where("digital_capital is not null").order("digital_capital desc").limit(18)
 
 
   def self.percentage_of_people(num)

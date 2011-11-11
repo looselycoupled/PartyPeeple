@@ -1,10 +1,15 @@
 class ReportsController < ApplicationController
 
   def index
-    redirect_to :action => [:gender, :leaderboard, :average_friends].sample
+    redirect_to :action => [:gender, :leaderboard, :average_friends, :breakdown].sample
   end
 
   def gender
+    @males = Person.males.count
+    @females = Person.females.count    
+  end
+  
+  def outcomes
     @males = Person.males.count
     @females = Person.females.count    
   end

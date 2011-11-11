@@ -15,7 +15,7 @@
     <h2>Conversation Starters</h2>
     <ul class="starters">
       
-        <% if Rails.env == "development" || @person.birthday == @peep.birthday 
+        <% if @person.birthday == @peep.birthday 
             @interest_matches += 1
         %>
         <li class="clearfix">
@@ -25,7 +25,7 @@
         </li>
         <% end %>
       
-        <% if Rails.env == "development" ||  (@recommendation == "Flip" && Party::friends_in_common(@person, @peep).count == 0) 
+        <% if  (@recommendation == "Flip" && Party::friends_in_common(@person, @peep).count == 0) 
             @interest_matches += 1
         %>
         <li class="clearfix">
@@ -35,7 +35,7 @@
         </li>
         <% end %>
 
-        <% if Rails.env == "development" || (@person.religion == @peep.religion && !@peep.religion.nil?) 
+        <% if (@person.religion == @peep.religion && !@peep.religion.nil?) 
             @interest_matches += 1
         %>
         <li class="clearfix">
@@ -45,7 +45,7 @@
         </li>
         <% end %>
 
-        <% if Rails.env == "development" || (@person.political == @peep.political && !@peep.political.nil?) 
+        <% if (@person.political == @peep.political && !@peep.political.nil?) 
             @interest_matches += 1
         %>
         <li class="clearfix">
@@ -55,7 +55,7 @@
         </li>
         <% end %>
 
-        <% if Rails.env == "development" || @friends_in_common.count > 0 
+        <% if @friends_in_common.count > 0 
             @interest_matches += 1
         %>
             <% 
@@ -70,7 +70,7 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_books.count > 0 
+        <% if @shared_books.count > 0 
             @interest_matches += 1
         %>
             <% @shared_books[0..1].each do |book| %>
@@ -82,7 +82,7 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_tv_shows.count > 0 
+        <% if @shared_tv_shows.count > 0 
             @interest_matches += 1
         %>
             <% @shared_tv_shows[0..1].each do |show| %>
@@ -94,7 +94,7 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_movies.count > 0 
+        <% if @shared_movies.count > 0 
                 @interest_matches += 1
                 @shared_movies[0..1].each do |movie| %>
         <li class="clearfix">
@@ -105,7 +105,7 @@
             <% end %>
         <% end %>
         
-        <% if Rails.env == "development" || @shared_bands.count > 0 
+        <% if @shared_bands.count > 0 
                 @interest_matches += 1
                 @shared_bands[0..1].each do |band| 
         %>
@@ -118,7 +118,7 @@
         <%  end %>
         
         <% 
-            if Rails.env == "development" || @interest_matches < @interest_match_limit 
+            if @interest_matches < @interest_match_limit 
                 unique_books = @peep.books - @person.books
                 if unique_books.count > 0
                     @interest_matches += 1
@@ -134,7 +134,7 @@
         %>
 
         <% 
-            if Rails.env == "development" || @interest_matches < @interest_match_limit 
+            if @interest_matches < @interest_match_limit 
                 unique_tv_shows = @peep.tv_shows - @person.tv_shows
                 if unique_tv_shows.count > 0
                     @interest_matches += 1
@@ -151,7 +151,7 @@
         %>
 
         <% 
-            if Rails.env == "development" || @interest_matches < @interest_match_limit 
+            if @interest_matches < @interest_match_limit 
                 unique_movies = @peep.movies - @person.movies
                 if unique_movies.count > 0
                     @interest_matches += 1
@@ -168,7 +168,7 @@
         %>
 
         <% 
-            if Rails.env == "development" || @interest_matches < @interest_match_limit 
+            if @interest_matches < @interest_match_limit 
                 unique_teams = @peep.teams - @person.teams
                 if unique_teams.count > 0
                     @interest_matches += 1
@@ -184,12 +184,8 @@
             end 
         %>
         
-        
-        
-        
-        
-
     </ul>
+
     
     <% if @recommendation.titleize != "Friend" %>
     <div class="wingpeeps clearfix">

@@ -9,4 +9,8 @@ class ReportsController < ApplicationController
     @females = Person.females.count    
   end
   
+  def average_friends
+    @average_friends = Person.partiers.inject(0){|a,b| a + b.friends.count} / Person.partiers.count
+  end
+  
 end

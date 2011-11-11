@@ -1,0 +1,18 @@
+<h1>Party Peeple: Outcomes</h1>
+
+<img src="<%= Gchart.pie(:size => "824x550", 
+    :data => [@males, @females], 
+    :labels => ["Male: #{Person.percentage_of_people(@males)}%","Female: #{Person.percentage_of_people(@females)}%"]) 
+%>"/>
+
+<!--
+
+45% Met new friend
+19% Got a date
+14% Received phone number
+11% New activity partner
+7% F#$%
+3% Civil commital due to e-Geaux-vention recommendation
+1% Furry encounter
+
+-->

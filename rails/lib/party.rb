@@ -11,7 +11,7 @@ module Party
         "flirt"
       else
         # "F#!%"
-        "flip"
+        "F#!%"
       end
     else
       "friend"

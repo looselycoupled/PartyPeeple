@@ -4,6 +4,13 @@ class DashboardController < ApplicationController
   before_filter :require_security
   
   def index
+    # @people = Person.all
+    @people = Person.where("identifier in ('737428913')") if Rails.env.development?
+    @people.each do |u|
+      UserMailer.user_data_confirmation(u).delay.deliver
+    end
+    
+    
   end
   
   def reset

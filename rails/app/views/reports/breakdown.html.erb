@@ -1,0 +1,17 @@
+<h1>Party Peeple: Outcomes</h1>
+
+<img src="<%= Gchart.pie(:size => "824x550", 
+    :data => [@males, @females], 
+    :labels => ["Male: #{Person.percentage_of_people(@males)}%","Female: #{Person.percentage_of_people(@females)}%"]) 
+%>"/>
+
+<!--
+
+% 600+
+% 500-599
+% 400-499
+% 300-399
+% 200-299
+% 199-
+
+-->

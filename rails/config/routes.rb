@@ -6,6 +6,10 @@ Partypeeple::Application.routes.draw do
 
   get "party/orientation"
 
+  get "public/closed"
+  
+  match 'closed' => 'public#closed'
+
   match "party/index/(:letter)" => 'party#index', :as => :party
 
   match 'login' => 'public#login'
@@ -82,7 +86,7 @@ Partypeeple::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "public#index"
+  root :to => "public#closed"
 
   # See how all your routes lay out with "rake routes"
 

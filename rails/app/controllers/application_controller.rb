@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :load_person
+  before_filter :closed
+
   protect_from_forgery
 
   layout "general"
@@ -22,6 +24,10 @@ class ApplicationController < ActionController::Base
     if authenticated?
       @person = Person.find_by_identifier(session[:identifier])
     end
+  end
+  
+  def closed
+    redirect_to root_url unless params[:action] == "closed"
   end
   
 end

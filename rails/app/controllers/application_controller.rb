@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :load_person
-  before_filter :closed
+  # before_filter :closed
 
   protect_from_forgery
 

@@ -1,3 +1,6 @@
+# Overview
+An "adult" social mingling/hookup app we did for the closing event of DC Technology Week 2011. The idea was a mobile web app that found your perfect mate based on social media profile.  It also calculated a digital capital score which was used as the basis for friend, flirt, f### recomendations.  Hundreds of people opted-in and hilariously we got a lot of investment inquiries from people thinking this was a legitimate business venture.
+
 # Facebook Integration
 In order to use this app you will need to create a Facebook application at http://developers.facebook.com.  You can enter the application ID and Secret data into rails/config/facebook.yml.
 
